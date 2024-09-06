@@ -39,6 +39,8 @@ export default defineConfig({
       { text: '主页', link: '/' },
       { text: 'XArrPay个人版', link: '/person' },
       { text: 'XArrPay商户版', link: '/merchant' },
+      { text: '授权中心', link: 'https://auth.xarr.cn' },
+      { text: '博客', link: 'https://blog.52nyg.com' },
     ],
 
     sidebar: {
