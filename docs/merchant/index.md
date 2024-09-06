@@ -4,7 +4,7 @@ next:
   link: '/merchant/install/download'
 ---
 
-# XArrPay 商户版版本帮助中心
+# XArrPay 商户版帮助中心
 
 ## 产品概述
 XArrPay 商户版满足个人站长和企业运营的需求,本系统是专业的聚合支付系统,使用了超高性能的Go语言进行服务端开发,支持高并发,前端网页使用Vue,让用户体验更上一层楼.

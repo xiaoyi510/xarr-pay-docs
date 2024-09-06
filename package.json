@@ -11,5 +11,8 @@
     "postcss": "^8.4.45",
     "tailwindcss": "^3.4.10",
     "vitepress": "latest"
+  },
+  "dependencies": {
+    "markdown-it-custom-attrs": "^1.0.2"
   }
 }

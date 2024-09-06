@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress';
-
+//图片灯箱插件
+import mdItCustomAttrs from 'markdown-it-custom-attrs'
 // refer https://vitepress.dev/reference/site-config for details
 export default defineConfig({
   lang: 'zh-CN',
@@ -7,8 +8,22 @@ export default defineConfig({
   description: '一站式服务',
   lastUpdated: true,
   head: [
-    ['link', { ref: 'icon', href: '/favicon.png' }]
+    ['link', { ref: 'icon', href: '/favicon.png' }],
+    [
+      'link',
+      { rel: 'stylesheet', href: '../assets/css/fancybox.css' },
+    ],
+    ['script', { src: '../assets/js/fancybox.umd.js' }],
   ],
+  //图片灯箱相关配置
+  markdown: {
+    config: (md) => {
+      // use more markdown-it plugins!
+      md.use(mdItCustomAttrs, 'image', {
+        'data-fancybox': "gallery"
+      })
+    }
+  },
 
   themeConfig: {
     search: {
@@ -48,7 +63,25 @@ export default defineConfig({
         {
           text: 'XArrPay个人版文档',
           items: [
-            { text: 'Example', link: '/example' },
+            { text: '快速开始', link: '/person' },
+            {
+              text: '安装', items: [
+                { text: "环境要求", link: "/person/install/" },
+                { text: "下载安装包", link: "/person/install/download" },
+                { text: "宝塔-Go项目安装", link: "/person/install/bt" },
+                { text: "Docker", link: "/person/install/" },
+              ]
+            },
+            {
+              text:"通道",items:[
+                { text: "支付宝商家账单", link: "/person/channel/alipay_bill" },
+              ]
+            },
+            {
+              text:"常见问题",items:[
+                { text: "常见问题", link: "/person/questions/" },
+              ]
+            },
             // ...
           ],
         },
