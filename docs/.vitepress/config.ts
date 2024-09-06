@@ -6,19 +6,19 @@ export default defineConfig({
   title: 'XArr 文档中心',
   description: '一站式服务',
   lastUpdated: true,
-  head:[
-    ['link',{ref:'icon',href:'/favicon.png'}]
+  head: [
+    ['link', { ref: 'icon', href: '/favicon.png' }]
   ],
 
   themeConfig: {
     search: {
       provider: 'local'
     },
-    logo:"/assets/images/logo.png",
-    logoLink:"/",
+    logo: "/assets/images/logo.png",
+    logoLink: "/",
     editLink: {
       pattern: 'https://github.com/xiaoyi510/xarr-pay-docs/edit/main/docs/:path',
-      text:"编辑此页面"
+      text: "编辑此页面"
     },
     docFooter: {
       prev: '上一页',
@@ -42,7 +42,7 @@ export default defineConfig({
     ],
 
     sidebar: {
-      '/person/':[
+      '/person/': [
         {
           text: 'XArrPay个人版文档',
           items: [
@@ -51,12 +51,37 @@ export default defineConfig({
           ],
         },
       ],
-      '/merchant/':[
+      '/merchant/': [
         {
           text: 'XArrPay商户版文档',
           items: [
-            { text: 'Example', link: '/example' },
-            // ...
+            { text: '快速开始', link: '/merchant' },
+            {
+              text: '安装', items: [
+                { text: "宝塔-Go项目安装", link: "/merchant/install/bt" },
+                { text: "Docker", link: "/merchant/install/docker" },
+              ]
+            },
+            {
+              text:"通道",items:[
+                { text: "易支付", link: "/merchant/channel/epay" },
+                { text: "银联前置", link: "/merchant/channel/union" },
+                { text: "京东收银台", link: "/merchant/channel/jdsyt" },
+                { text: "V免签", link: "/merchant/channel/vmq" },
+              ]
+            },
+            {
+              text:"插件",items:[
+                { text: "安装", link: "/merchant/plugins/install" },
+                { text: "开发", link: "/merchant/plugins/dev" },
+              ]
+            },
+            {
+              text:"常见问题",items:[
+                { text: "常见问题", link: "/merchant/questions/index" },
+              ]
+            },
+
           ],
         },
       ],
