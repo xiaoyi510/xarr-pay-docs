@@ -7,6 +7,7 @@ export default defineConfig({
   description: '一站式服务',
 
   themeConfig: {
+    logo:"/assets/logo.png",
     nav: [
       { text: '主页', link: '/' },
 
@@ -31,5 +32,9 @@ export default defineConfig({
         ],
       },
     ],
+    footer: {
+      message: '高性能,安全,快速 就选XArr.',
+      copyright: 'Copyright © 2022-present 包子'
+    }
   },
 });

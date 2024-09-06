@@ -19,7 +19,7 @@ hero:
       link: https://blog.52nyg.com
 
 features:
-  - title: 购买
+  - title: 前去购买
     icon: 🛒
     details: 点击跳转购买，享受站长优质售后！
     link: 'https://auth.xarr.cn'
@@ -49,4 +49,3 @@ features:
 
 
 
-fff
