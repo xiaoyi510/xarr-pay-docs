@@ -58,6 +58,7 @@ export default defineConfig({
             { text: '快速开始', link: '/merchant' },
             {
               text: '安装', items: [
+                { text: "下载安装包", link: "/merchant/install/download" },
                 { text: "宝塔-Go项目安装", link: "/merchant/install/bt" },
                 { text: "Docker", link: "/merchant/install/docker" },
               ]
