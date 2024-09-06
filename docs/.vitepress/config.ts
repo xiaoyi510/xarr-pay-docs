@@ -81,6 +81,11 @@ export default defineConfig({
               ]
             },
             {
+              text:"系统接入",items:[
+                { text: "易支付", link: "/merchant/xpay/epay" },
+              ]
+            },
+            {
               text:"常见问题",items:[
                 { text: "常见问题", link: "/merchant/questions/index" },
               ]
