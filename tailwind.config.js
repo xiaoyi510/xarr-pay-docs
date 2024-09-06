@@ -7,11 +7,6 @@ export default {
   theme: {
     extend: {},
   },
-  themeConfig: {
-    editLink: {
-      pattern: 'https://github.com/xiaoyi510/xarr-pay-docs/edit/main/docs/:path'
-    }
-  },
   plugins: [],
 }
 
