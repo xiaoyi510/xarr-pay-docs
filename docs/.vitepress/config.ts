@@ -2,13 +2,13 @@ import { defineConfig } from 'vitepress';
 
 // refer https://vitepress.dev/reference/site-config for details
 export default defineConfig({
-  lang: 'en-US',
-  title: 'VitePress',
-  description: 'Vite & Vue powered static site generator.',
+  lang: 'zh-CN',
+  title: 'XArr 文档中心',
+  description: '一站式服务',
 
   themeConfig: {
     nav: [
-      { text: 'Example', link: '/example' },
+      { text: '主页', link: '/' },
 
       // {
       //   text: 'Dropdown Menu',
