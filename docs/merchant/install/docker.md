@@ -1,6 +1,10 @@
 # 使用 Docker 安装系统
 
 
+### docker run 命令行运行
+
+
+
 ### docker-compose.yml 文件内容
 ```
 version: '3.8'
