@@ -21,16 +21,20 @@ hero:
 features:
   - title: 前去购买
     icon: 🛒
-    details: 点击跳转购买，享受站长优质售后！
+    details: 前往授权中心进行下载
     link: 'https://auth.xarr.cn'
+    linkText: 立即前往
   - title: 个人版文档
     icon: 🛒
+    details: 高清无码教程
     link: /person
+    linkText: 立即查看
     
   - title: 商户版版文档
     icon: 🛒
-  
+    details: 高清无码教程
     link: /merchant
+    linkText: 立即查看
   # - title: 个人版演示
   #   details: |
   #     点击跳转前台地址
