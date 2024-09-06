@@ -23,29 +23,37 @@ features:
     icon: 🛒
     details: 点击跳转购买，享受站长优质售后！
     link: 'https://auth.xarr.cn'
-  - title: 个人版演示
-    details: |
-      点击跳转前台地址
-      <br/>
-      账号：usertest
-      <br/>
-      密码：123456
-    link: 'https://pre-person.xarr.cn'
-  - title: 商户版演示
-    details: | 
-      点击跳转前台地址
-      <br/>
-      后台地址：/admin
-      <br/>
-      账号密码：admin
-      <br/>
-      前台账号：user
-      <br/>
-      前台密码：123456
+  - title: 个人版文档
+    icon: 🛒
+    details: 查看个人版文档
+    link: /person
+    
+  - title: 商户版版文档
+    icon: 🛒
+    details: 查看商户版文档
+    link: /merchant
+  # - title: 个人版演示
+  #   details: |
+  #     点击跳转前台地址
+  #     <br/>
+  #     账号：usertest
+  #     <br/>
+  #     密码：123456
+  #   link: 'https://pre-person.xarr.cn'
+  # - title: 商户版演示
+  #   details: | 
+  #     点击跳转前台地址
+  #     <br/>
+  #     后台地址：/admin
+  #     <br/>
+  #     账号密码：admin
+  #     <br/>
+  #     前台账号：user
+  #     <br/>
+  #     前台密码：123456
       
-    link: 'https://pre-merchant.xarr.cn/'
+  #   link: 'https://pre-merchant.xarr.cn/'
   
 ---
-
 
 

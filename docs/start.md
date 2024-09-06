@@ -30,9 +30,9 @@ XArrPay 提供了个人版以及商户版,以满足个人站长及企业运营�
 
 #### 商户版
 
-首页:https://pre-merchant.xarr.cn/
+首页: https://pre-merchant.xarr.cn/
 
-后台:https://pre-merchant.xarr.cn/admin
+后台: https://pre-merchant.xarr.cn/admin
 
 商户账号: user
 商户密码: 123456
@@ -51,18 +51,18 @@ XArrPay 提供了个人版以及商户版,以满足个人站长及企业运营�
 * **售后群**, 购买产品后将会加入 **VIP** 售后群
 
 ### 购买渠道:
-1. 官方平台处购买: [auth.xarr.cn](auth.xarr.cn)
+1. 官方平台处购买: [auth.xarr.cn](auth.xarr.cn){target="_self"}
 2. 官方代理商/授权商处购买
     
-    正版授权商查询: [auth.xarr.cn](auth.xarr.cn)
+    正版授权商查询: [auth.xarr.cn](auth.xarr.cn){target="_self"}
 
 PS: 切勿相信授权转让等, 一经发现会封授权,且无售后服务,只有绑定在自己QQ才算是自己的!
 
 
 ## 系统开发相关技术
-* Golang: [https://github.com/golang/go](https://github.com/golang/go)
-* Vue: [https://github.com/vuejs/vue](https://github.com/vuejs/vue)
-* ElementUi: [https://element.eleme.cn/](https://element.eleme.cn/)
+* Golang: [https://github.com/golang/go](https://github.com/golang/go){target="_self"}
+* Vue: [https://github.com/vuejs/vue](https://github.com/vuejs/vue){target="_self"}
+* ElementUi: [https://element.eleme.cn/](https://element.eleme.cn/){target="_self"}
 * Mysql
 * Nginx
 * Docker
