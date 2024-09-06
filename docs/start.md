@@ -16,9 +16,62 @@ XArrPay 提供了个人版以及商户版,以满足个人站长及企业运营�
 
 
 ### 演示站
-个人版
-https://pre-person.xarr.cn
+
+
+
+#### 个人版
+
+地址: https://pre-person.xarr.cn
 
 测试账号
 账号: user
 密码: 123456
+
+
+#### 商户版
+
+首页:https://pre-merchant.xarr.cn/
+
+后台:https://pre-merchant.xarr.cn/admin
+
+商户账号: user
+商户密码: 123456
+
+管理账号: amdin
+管理密码: 123456
+
+
+## 购买
+
+### 提供服务
+* **免费升级**, 不会版本不一样就重新收一份钱,当然不同产品会区分,如个人版和商户版两个
+* **永久使用**, 当然你得买的是永久套餐~
+* **安全保障**, 系统将会持续更新和修复bug
+* **代安装**, 购买产品后提供一次免费安装服务, 如在授权商处购买,则联系对应授权商享受此服务
+* **售后群**, 购买产品后将会加入 **VIP** 售后群
+
+### 购买渠道:
+1. 官方平台处购买: [auth.xarr.cn](auth.xarr.cn)
+2. 官方代理商/授权商处购买
+    
+    正版授权商查询: [auth.xarr.cn](auth.xarr.cn)
+
+PS: 切勿相信授权转让等, 一经发现会封授权,且无售后服务,只有绑定在自己QQ才算是自己的!
+
+
+## 系统开发相关技术
+* Golang: [https://github.com/golang/go](https://github.com/golang/go)
+* Vue: [https://github.com/vuejs/vue](https://github.com/vuejs/vue)
+* ElementUi: [https://element.eleme.cn/](https://element.eleme.cn/)
+* Mysql
+* Nginx
+* Docker
+* Lua
+
+
+## 版权信息
+版权所有 Copyright @2022-Nerver 包子
+
+
+## 警告
+切勿将系统使用于非法/违规等用途,一经发现,将取消授权,违者自负!
