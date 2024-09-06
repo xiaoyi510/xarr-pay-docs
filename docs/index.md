@@ -6,7 +6,7 @@ hero:
   text: 一站式支付服务,提供一流的交互,高性能的服务
   tagline: 高性能, 高安全, 高并发, 多通道, 稳, 无刻意后门~~
   image:
-    src: /assets/logo.png
+    src: /assets/images/logo.png
     alt: Xarr
     width: 200
     height: 150
