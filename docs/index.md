@@ -25,12 +25,11 @@ features:
     link: 'https://auth.xarr.cn'
   - title: 个人版文档
     icon: 🛒
-    details: 查看个人版文档
     link: /person
     
   - title: 商户版版文档
     icon: 🛒
-    details: 查看商户版文档
+  
     link: /merchant
   # - title: 个人版演示
   #   details: |
