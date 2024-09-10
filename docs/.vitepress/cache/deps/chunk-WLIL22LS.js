@@ -584,6 +584,9 @@ function isDirty(sub) {
   return false;
 }
 function refreshComputed(computed3) {
+  if (computed3.flags & 2) {
+    return false;
+  }
   if (computed3.flags & 4 && !(computed3.flags & 16)) {
     return;
   }
@@ -1831,8 +1834,8 @@ var ComputedRefImpl = class {
    * @internal
    */
   notify() {
-    this.flags |= 16;
     if (activeSub !== this) {
+      this.flags |= 16;
       this.dep.notify();
     } else if (true) ;
   }
@@ -3496,6 +3499,7 @@ function getInnerChild$1(vnode) {
 }
 function setTransitionHooks(vnode, hooks) {
   if (vnode.shapeFlag & 6 && vnode.component) {
+    vnode.transition = hooks;
     setTransitionHooks(vnode.component.subTree, hooks);
   } else if (vnode.shapeFlag & 128) {
     vnode.ssContent.transition = hooks.clone(vnode.ssContent);
@@ -3536,7 +3540,7 @@ function defineComponent(options, extraOptions) {
 function useId() {
   const i = getCurrentInstance();
   if (i) {
-    return (i.appContext.config.idPrefix || "v") + ":" + i.ids[0] + i.ids[1]++;
+    return (i.appContext.config.idPrefix || "v") + "-" + i.ids[0] + i.ids[1]++;
   } else if (true) {
     warn$1(
       `useId() is called when there is no active component instance to be associated with.`
@@ -7325,7 +7329,7 @@ function baseCreateRenderer(options, createHydrationFns) {
               endMeasure(instance, `hydrate`);
             }
           };
-          if (isAsyncWrapperVNode) {
+          if (isAsyncWrapperVNode && type.__asyncHydrate) {
             type.__asyncHydrate(
               el,
               instance,
@@ -8491,8 +8495,7 @@ function renderComponentRoot(instance) {
     data,
     setupState,
     ctx,
-    inheritAttrs,
-    isMounted
+    inheritAttrs
   } = instance;
   const prev = setCurrentRenderingInstance(instance);
   let result;
@@ -8612,7 +8615,7 @@ function renderComponentRoot(instance) {
         `Component inside <Transition> renders non-element root node that cannot be animated.`
       );
     }
-    root.transition = isMounted ? vnode.component.subTree.transition : vnode.transition;
+    setTransitionHooks(root, vnode.transition);
   }
   if (setRoot) {
     setRoot(root);
@@ -10398,7 +10401,7 @@ function isMemoSame(cached, memo) {
   }
   return true;
 }
-var version = "3.5.2";
+var version = "3.5.3";
 var warn2 = true ? warn$1 : NOOP;
 var ErrorTypeStrings = ErrorTypeStrings$1;
 var devtools = true ? devtools$1 : void 0;
@@ -10411,7 +10414,9 @@ var _ssrUtils = {
   isVNode,
   normalizeVNode,
   getComponentPublicInstance,
-  ensureValidVNode
+  ensureValidVNode,
+  pushWarningContext,
+  popWarningContext
 };
 var ssrUtils = _ssrUtils;
 var resolveFilter = null;
@@ -12423,7 +12428,7 @@ export {
 
 @vue/shared/dist/shared.esm-bundler.js:
   (**
-  * @vue/shared v3.5.2
+  * @vue/shared v3.5.3
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
@@ -12431,14 +12436,14 @@ export {
 
 @vue/reactivity/dist/reactivity.esm-bundler.js:
   (**
-  * @vue/reactivity v3.5.2
+  * @vue/reactivity v3.5.3
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 
 @vue/runtime-core/dist/runtime-core.esm-bundler.js:
   (**
-  * @vue/runtime-core v3.5.2
+  * @vue/runtime-core v3.5.3
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
@@ -12446,7 +12451,7 @@ export {
 
 @vue/runtime-dom/dist/runtime-dom.esm-bundler.js:
   (**
-  * @vue/runtime-dom v3.5.2
+  * @vue/runtime-dom v3.5.3
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
@@ -12454,9 +12459,9 @@ export {
 
 vue/dist/vue.runtime.esm-bundler.js:
   (**
-  * vue v3.5.2
+  * vue v3.5.3
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 */
-//# sourceMappingURL=chunk-CYL7IBAI.js.map
+//# sourceMappingURL=chunk-WLIL22LS.js.map
