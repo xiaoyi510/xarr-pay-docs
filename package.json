@@ -16,6 +16,6 @@
     "markdown-it-custom-attrs": "^1.0.2"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "4.9.5"
+    "@rollup/rollup-linux-x64-musl": "^4.21.2"
   }
 }
