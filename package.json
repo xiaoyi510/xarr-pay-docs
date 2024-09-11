@@ -14,11 +14,5 @@
   },
   "dependencies": {
     "markdown-it-custom-attrs": "^1.0.2"
-  },
-  "resolutions": {
-    "rollup": "npm:@rollup/wasm-node"
-  },
-  "optionalDependencies": {
-    "@rollup/rollup-linux-x64-musl": "^4.21.2"
   }
 }
