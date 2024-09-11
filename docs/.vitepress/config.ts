@@ -3,7 +3,6 @@ import { defineConfig } from 'vitepress';
 import mdItCustomAttrs from 'markdown-it-custom-attrs'
 // refer https://vitepress.dev/reference/site-config for details
 export default defineConfig({
-  base: '/docs/',   // 使首页自定义样式生效
   lang: 'zh-CN',
   title: 'XArr 文档中心',
   description: '一站式服务',
