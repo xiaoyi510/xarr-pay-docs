@@ -73,12 +73,12 @@ export default defineConfig({
               ]
             },
             {
-              text:"通道",items:[
+              text: "通道", items: [
                 { text: "支付宝商家账单", link: "/person/channel/alipay_bill" },
               ]
             },
             {
-              text:"常见问题",items:[
+              text: "常见问题", items: [
                 { text: "常见问题", link: "/person/questions/" },
               ]
             },
@@ -100,7 +100,8 @@ export default defineConfig({
               ]
             },
             {
-              text:"通道",items:[
+              text: "通道", items: [
+                { text: "支付宝", items: [{ text: "账单模式", link: "/merchant/channel/alipay_bill" }] },
                 { text: "易支付", link: "/merchant/channel/epay" },
                 { text: "银联前置", link: "/merchant/channel/union" },
                 { text: "京东收银台", link: "/merchant/channel/jdsyt" },
@@ -108,18 +109,29 @@ export default defineConfig({
               ]
             },
             {
-              text:"插件",items:[
+              text: "插件", items: [
                 { text: "安装", link: "/merchant/plugins/install" },
                 { text: "开发", link: "/merchant/plugins/dev" },
               ]
             },
             {
-              text:"系统接入",items:[
+              text: "系统接入", items: [
                 { text: "易支付", link: "/merchant/xpay/epay" },
               ]
             },
             {
-              text:"常见问题",items:[
+              text: "模板", items: [
+                {
+                  text: "首页模板",
+                  items: [
+                    { text: "模板引擎", link: "/merchant/templates/index/" },
+                    { text: "模板开发", link: "/merchant/templates/index/dev" },
+                  ]
+                }
+              ]
+            },
+            {
+              text: "常见问题", items: [
                 { text: "常见问题", link: "/merchant/questions/index" },
               ]
             },
