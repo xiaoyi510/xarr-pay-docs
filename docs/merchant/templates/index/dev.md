@@ -5,20 +5,16 @@
  templates--固定
     index--固定
         index1--模板名称
-            index.html--首页文件
-            header.html--模板头部
-            footer.html--模板底部
- public--固定
-    templates--固定
-        index--固定
-            index1--模板名称
+             assets--唯一模板可外部访问资源路径
                 js--JS资源
                     main.js
                 images--图片资源
                     banner1.png
                 css--样式资源
                     main.css
-
+            index.html--首页文件
+            header.html--模板头部
+            footer.html--模板底部
 
 
 ```
