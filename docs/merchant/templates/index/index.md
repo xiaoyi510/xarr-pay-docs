@@ -15,4 +15,4 @@
     * templates/index/模板名称
 
 * 主题资源路径-此路径为用户可访问的 所以需要放在这里
-    * public/templates/index/模板名称
+    * templates/index/模板名称/assets
