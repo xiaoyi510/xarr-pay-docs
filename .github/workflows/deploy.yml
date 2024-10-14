@@ -56,7 +56,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./docs/.vitepress/dist
+          local-dir: /home/runner/work/xarr-pay-docs/xarr-pay-docs/docs/.vitepress/dist
           server-dir: /
 
   # 部署工作
