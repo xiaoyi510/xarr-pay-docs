@@ -1,0 +1,24 @@
+<div style="position: relative;color:#555;font:12px/1.5 Microsoft YaHei,Tahoma,Helvetica,Arial,sans-serif;max-width:600px;margin:50px auto;border-radius: 5px;box-shadow:0 5px 10px#aaaaaa;background: 0 0 repeat-x#FFF;background-image: -webkit-repeating-linear-gradient(135deg, #4882CE,#4882CE 20px, #FFF 20px, #FFF 35px, #EB1B2E 35px,#EB1B2E 55px, #FFF 55px, #FFF 70px);background-image:repeating-linear-gradient(-45deg, #4882CE, #4882CE 20px, #FFF 20px, #FFF 35px, #EB1B2E 35px, #EB1B2E 55px, #FFF 55px, #FFF 70px);background-size: 100% 10px"
+    v-pre>
+    <div style="padding: 0 15px 15px;">
+        <h2 style="border-bottom:1px solid #e9e9e9;font-size:18px;font-weight:normal;padding:20px 0 10px;">您有一个新订单啦</h2>
+        <p>商品名称:
+            <span style="color: #007bfc;">{{subject}}</span>
+        </p>
+        <p>订单ID:
+            <span style="color: #007bfc;">{{order_id}}</span>
+        </p>
+        <p>商户订单ID:
+            <span style="color: #007bfc;">{{out_order_id}}</span>
+        </p>
+        <p>订单金额:
+            <span style="color: #007bfc;">{{amount}}</span>
+        </p>
+        <p>支付金额:
+            <span style="color: #007bfc;">{{trade_amount}}</span>
+        </p>
+    </div>
+    <div style="color:#888;padding:10px;border-top:1px solid #e9e9e9;background:#f5f5f5;border-radius: 0 0 5px 5px;">
+        <p style="margin:0;padding:0;">本邮件由系统发送，请勿回复！感谢您对{{web_title}}的关注</p>
+    </div>
+</div>
