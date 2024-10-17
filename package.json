@@ -15,5 +15,8 @@
   "dependencies": {
     "markdown-it-custom-attrs": "^1.0.2",
     "vitepress-plugin-tabs": "^0.5.0"
+  },
+  "resolutions": {
+    "rollup": "npm:@rollup/wasm-node"
   }
 }
