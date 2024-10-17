@@ -1,21 +1,7 @@
 # 通知模板分享
 
 
-## 包子分享
-
-#### 代码
-  
-
-::: code-group
-
-
-
-
-:::
-
-### 预览列表
-
-
+## 包子的分享
 
 :::tabs
 == 订单
@@ -38,7 +24,10 @@
 
 **预览效果**
 
+
+<div class="p-3 border-dashed border-2 border-gray-200 ">
 <!--@include: ./baozi/email_code.html-->
+</div>
 
 **HTML代码**
 
