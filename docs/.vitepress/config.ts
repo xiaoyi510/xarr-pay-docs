@@ -2,6 +2,11 @@ import { defineConfig } from 'vitepress';
 //图片灯箱插件
 import mdItCustomAttrs from 'markdown-it-custom-attrs'
 // refer https://vitepress.dev/reference/site-config for details
+
+import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs';
+
+
+
 export default defineConfig({
   lang: 'zh-CN',
   title: 'XArr 文档中心',
@@ -22,6 +27,8 @@ export default defineConfig({
       md.use(mdItCustomAttrs, 'image', {
         'data-fancybox': "gallery"
       })
+
+      md.use(tabsMarkdownPlugin);
     }
   },
 
