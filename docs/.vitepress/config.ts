@@ -127,6 +127,10 @@ export default defineConfig({
                     { text: "模板引擎", link: "/merchant/templates/index/" },
                     { text: "模板开发", link: "/merchant/templates/index/dev" },
                   ]
+                },
+                {
+                  text: "通知模板",
+                  link: "/merchant/templates/notification/" 
                 }
               ]
             },
