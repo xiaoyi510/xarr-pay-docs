@@ -34,4 +34,27 @@
 
 <<< ./baozi/email_code.html [邮件验证码]
 
+== 微信订单创建/支付成功
+微信公众号模板: 工具 -	信息查询 - 订单支付成功通知	
+```
+{
+    "thing8": {
+        "value": "{{subject}}"
+    },
+    "character_string2": {
+        "value": "{{order_id}}"
+    },
+    "amount3": {
+        "value": "{{trade_amount}}"
+    },
+    "thing6": {
+        "value": "{{pay_type}}"
+    },
+    "time4": {
+        "value": "{{create_time}}"
+    }
+}
+
+```
+
 :::
