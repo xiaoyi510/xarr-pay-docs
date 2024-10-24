@@ -12,6 +12,10 @@ export default defineConfig({
   title: 'XArr 文档中心',
   description: '一站式服务',
   lastUpdated: true,
+  sitemap: {
+    hostname: 'https://docs.xarr.cn',
+    lastmodDateOnly: false
+  },
   head: [
     ['link', { ref: 'icon', href: '/favicon.png' }],
     [
