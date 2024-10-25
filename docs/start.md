@@ -19,7 +19,7 @@ XArrPay 提供了个人版以及商户版,以满足个人站长及企业运营�
 
 
 
-#### 个人版
+#### XArrPay个人版
 
 地址: https://pre-person.xarr.cn
 
@@ -28,7 +28,7 @@ XArrPay 提供了个人版以及商户版,以满足个人站长及企业运营�
 密码: 123456
 
 
-#### 商户版
+#### XArrPay商户版
 
 首页: https://pre-merchant.xarr.cn/
 
