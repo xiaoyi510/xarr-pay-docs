@@ -148,6 +148,8 @@ export default defineConfig({
             {
               text: "常见问题", items: [
                 { text: "常见问题", link: "/merchant/questions/index" },
+                { text: "回调问题", link: "/merchant/questions/callback" },
+                { text: "访问相关", link: "/merchant/questions/request" },
               ]
             },
 
