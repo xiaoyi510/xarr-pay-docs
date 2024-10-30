@@ -113,6 +113,7 @@ export default defineConfig({
             {
               text: "通道", items: [
                 { text: "支付宝", items: [{ text: "账单模式", link: "/merchant/channel/alipay_bill" }] },
+                { text: "微信", items: [{ text: "微信JSAPI", link: "/merchant/channel/wxpay_jsapi" }] },
                 { text: "易支付", link: "/merchant/channel/epay" },
                 { text: "银联前置", link: "/merchant/channel/union" },
                 { text: "京东收银台", link: "/merchant/channel/jdsyt" },
