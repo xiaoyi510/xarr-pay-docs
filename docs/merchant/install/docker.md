@@ -1,5 +1,6 @@
 # 使用 Docker 安装系统
 
+注: Docker不一定及时更新
 
 ### docker run 命令行运行
 
