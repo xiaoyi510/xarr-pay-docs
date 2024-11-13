@@ -142,8 +142,12 @@ export default defineConfig({
                 },
                 {
                   text: "通知模板",
-                  link: "/merchant/templates/notification/" 
+                  items: [
+                      { text: "模板配置案例", link: "/merchant/notification/index" },
+                      { text: "即时消息", link: "/merchant/notification/websocket-tip" },
+                  ]
                 }
+
               ]
             },
             {
