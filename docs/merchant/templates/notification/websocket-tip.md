@@ -3,7 +3,7 @@
 ### 使用方式
 Websocket
 
-连接地址: `ws://域名/api/ws?uid=用户pid&message_key=消息同步密钥`
+连接地址: `[ws/wss]://域名/api/ws?uid=用户pid&message_key=消息同步密钥`
 
 消息同步密钥在 `个人中心`-`基本信息`中获取
 
