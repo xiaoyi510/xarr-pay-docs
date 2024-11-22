@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn
+  /usr/local/bin/node /usr/local/bin/yarn install
 
 PATH: 
   /bin:/usr/bin:/usr/local/bin
@@ -15,11 +15,11 @@ Platform:
 
 Trace: 
   Error
-      at Error.fromJSON (https://w-corp-staticblitz.com/fetch.worker.34c588ed.js:1:226602)
-      at Error.create (https://w-corp-staticblitz.com/fetch.worker.34c588ed.js:1:225114)
-      at _0x24204b._buildBatchRequest (https://w-corp-staticblitz.com/fetch.worker.34c588ed.js:1:244806)
-      at _0x24204b.linkPackages (https://w-corp-staticblitz.com/fetch.worker.34c588ed.js:1:242416)
-      at MessagePort._0x3f3e65 (https://w-corp-staticblitz.com/fetch.worker.34c588ed.js:1:212388)
+      at Error.fromJSON (https://w-corp-staticblitz.com/fetch.worker.d3acb9e1.js:1:229988)
+      at Error.create (https://w-corp-staticblitz.com/fetch.worker.d3acb9e1.js:1:228541)
+      at _0x5a02ed._buildBatchRequest (https://w-corp-staticblitz.com/fetch.worker.d3acb9e1.js:1:248225)
+      at _0x5a02ed.linkPackages (https://w-corp-staticblitz.com/fetch.worker.d3acb9e1.js:1:245866)
+      at MessagePort._0x54ff34 (https://w-corp-staticblitz.com/fetch.worker.d3acb9e1.js:1:215686)
 
 npm manifest: 
   {
