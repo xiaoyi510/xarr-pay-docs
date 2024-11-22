@@ -1,0 +1,174 @@
+<div>
+    <includetail>
+        <div align="center">
+            <div class="open_email" style="margin-left: 8px; margin-top: 8px; margin-bottom: 8px; margin-right: 8px;">
+                <div>
+                    <br>
+                    <span class="genEmailContent">
+                        <div id="cTMail-Wrap"
+                             style="word-break: break-all;box-sizing:border-box;text-align:center;min-width:320px; max-width:660px; border:1px solid #f6f6f6; background-color:#f7f8fa; margin:auto; padding:20px 0 30px; font-family:'helvetica neue',PingFangSC-Light,arial,'hiragino sans gb','microsoft yahei ui','microsoft yahei',simsun,sans-serif">
+                            <div class="main-content" style="">
+                                <table style="width:100%;font-weight:300;margin-bottom:10px;border-collapse:collapse">
+                                    <tbody>
+                                    <tr style="font-weight:300">
+                                        <td style="width:3%;max-width:30px;"></td>
+                                        <td style="max-width:600px;">
+                                            <div id="cTMail-logo" style="width:92px; height:25px;">
+                                                <a href="https://xpay.5v1.com/">
+                                                    <img border="0" src="https://xpaypass.5v1.com/uploads/images/d5nsbt88itgknomq7h.png"
+                                                         style="width:92px; height:25px;display:block">
+                                                </a>
+                                            </div>
+                                            <p style="height:2px;background-color: #00a4ff;border: 0;font-size:0;padding:0;width:100%;margin-top:20px;"></p>
+
+                                            <div id="cTMail-inner" style="background-color:#fff; padding:23px 0 20px;box-shadow: 0px 1px 1px 0px rgba(122, 55, 55, 0.2);text-align:left;">
+                                                <table style="width:100%;font-weight:300;margin-bottom:10px;border-collapse:collapse;text-align:left;">
+                                                    <tbody>
+                                                    <tr style="font-weight:300">
+                                                        <td style="width:3.2%;max-width:30px;"></td>
+                                                        <td style="max-width:480px;text-align:left;">
+                                                            <h1 id="cTMail-title" style="font-size: 20px; line-height: 36px; margin: 0px 0px 22px;">
+                                                                【码支付】叮，您有一笔来自{{web_title}}站点的收款。
+                                                            </h1>
+                                                          <p id="cTMail-userName" style="line-height: 24px; margin: 0px;"><span style="color: rgb(51, 51, 51); font-size: 14px;">尊敬的用户，您好！</span></p>
+
+                                                          <p id="cTMail-userName" style="line-height: 24px; margin: 0px;"><span style="color: rgb(51, 51, 51); font-size: 14px;">您的支付订单情况如下：</span></p>
+                                                            
+
+                                                          <p style="border-top: 2px solid rgb(234, 237, 240); margin: 0px 0px 20px;"></p>
+                                                          
+                                                          <table border="0" cellpadding="0" cellspacing="0" style="font-size:14px; line-height:1.8em; margin:20px 0">
+                                                              
+                                                          <tbody>
+                                                          <tr>
+                                                          <th style="border-right:2px solid #e5e5e5;padding:0.5em 0.2em 0 0; text-align:left;vertical-align:top;width:6.5em;line-height: 20px;">支付IP</th>
+                                                          <td style="padding:0.5em 0 0 2em;font-size:14px;vertical-align: top;line-height: 20px;">
+                                                          <p style="margin:0;">{{client_ip}}</p>
+                                                          </tr>
+                                                          <tr>
+                                                          <th style="border-right:2px solid #e5e5e5;padding:0.5em 0.2em 0 0; text-align:left;vertical-align:top;line-height: 20px;width:6.5em;">订单号</th>
+                                                          <td style="padding:0.5em 0 0 2em;font-size:14px;vertical-align: top;line-height: 20px;"> 
+                                                          <p style="margin:0;">{{order_id}}</p>
+                                                          </td>
+                                                          </tr>
+                                                          <tr>
+                                                          <th style="border-right:2px solid #e5e5e5;padding:0.5em 0.2em 0 0; text-align:left;vertical-align:top;width:6.5em;line-height: 20px;">商品名称</th>
+                                                          <td style="padding:0.5em 0 0 2em;font-size:14px;vertical-align: top;line-height: 20px;">
+                                                          <p style="margin:0;">{{subject}}</p>
+                                                          </tr>
+                                                          <tr>
+                                                          <th style="border-right:2px solid #e5e5e5; padding:0.5em 0.2em 0 0;text-align:left;vertical-align:top;width:6.5em;line-height: 20px;">订单金额 </th>
+                                                          <td style="padding:0.5em 0 0 2em;font-size:14px;vertical-align: top;line-height: 20px;">
+                                                          <p style=" margin:0 ">{{amount}}元</p>
+                                                          </tr>
+                                                          <tr>
+                                                          <th style="border-right:2px solid #e5e5e5;padding:0.5em 0.2em 0 0; text-align:left;vertical-align:top;width:6.5em;line-height: 20px;">实际付款</th>
+                                                          <td style="padding:0.5em 0 0 2em;font-size:14px;vertical-align: top;line-height: 20px;">
+                                                          <p style="margin:0;">{{trade_amount}}元</p>
+                                                          </tr>
+                                                          <tr>
+                                                          <th style="border-right:2px solid #e5e5e5;padding:0.5em 0.2em 0 0; text-align:left;vertical-align:top;width:6.5em;line-height: 20px;">支付方式</th>
+                                                          <td style="padding:0.5em 0 0 2em;font-size:14px;vertical-align: top;line-height: 20px;">
+                                                          <p style="margin:0;">{{pay_type}}</p>
+                                                          </tr>
+                                                          <tr>
+                                                          <th style="border-right:2px solid #e5e5e5;padding:0.5em 0.2em 0 0; text-align:left;vertical-align:top;width:6.5em;line-height: 20px;">使用通道</th>
+                                                          <td style="padding:0.5em 0 0 2em;font-size:14px;vertical-align: top;line-height: 20px;">
+                                                          <p style="margin:0;">{{channel_code}}</p>
+                                                          </tr>
+                                                          <tr>
+                                                          <th style="border-right:2px solid #e5e5e5;padding:0.5em 0.2em 0 0; text-align:left;vertical-align:top;width:6.5em;line-height: 20px;">订单时间</th>
+                                                          <td style="padding:0.5em 0 0 2em;font-size:14px;vertical-align: top;line-height: 20px;">
+                                                          <p style="margin:0;">{{create_time}}</p>
+                                                          </tr>
+                                                          <tr>
+                                                          <th style="border-right:2px solid #e5e5e5;padding:0.5em 0.2em 0 0; text-align:left;vertical-align:top;width:6.5em;line-height: 20px;">支付时间</th>
+                                                          <td style="padding:0.5em 0 0 2em;font-size:14px;vertical-align: top;line-height: 20px;">
+                                                          <p style="margin:0;">{{pay_time}}</p>
+                                                          </tr>
+                                                          <tr>
+                                                          <th style="border-right:2px solid #e5e5e5;padding:0.5em 0.2em 0 0; text-align:left;vertical-align:top;width:6.5em;line-height: 20px;">支付设备</th>
+                                                          <td style="padding:0.5em 0 0 2em;font-size:14px;vertical-align: top;line-height: 20px;">
+                                                          <p style="margin:0;">{{device}}</p>
+                                                          </tr>
+                                                          <tr>
+                                                          </tbody>
+                                                          </table>
+                                                          
+                                                          
+                                                            <p class="cTMail-content"
+                                                               style="font-size: 14px; color: rgb(51, 51, 51); line-height: 24px; margin: 6px 0px 0px; word-wrap: break-word; word-break: break-all;">
+                                                                <a id="cTMail-btn" href="https://xpaypass.5v1.com/user/info" title=""
+                                                                   style="font-size: 16px; line-height: 45px; display: block; background-color: rgb(0, 164, 255); color: rgb(255, 255, 255); text-align: center; text-decoration: none; margin-top: 20px; border-radius: 3px;">
+                                                                    商户中心
+                                                                </a>
+                                                            </p>
+                                                            
+                                                            <p class="cTMail-content" style="line-height: 24px; margin: 6px 0px 0px; overflow-wrap: break-word; word-break: break-all;">
+                                                                <span style="color: rgb(51, 51, 51); font-size: 14px;">
+                                                                    <br>
+                                                                    温馨提示：
+                                                                    <br>
+                                                                    若您想关闭订单通知可以进入支付设置→ 
+                                                                    <a href="https://xpaypass.5v1.com/user/info" title=""
+                                                                       style="color: rgb(0, 164, 255); text-decoration: none; word-break: break-all; overflow-wrap: normal; font-size: 14px;">支付设置
+                                                                    </a>
+                                                                    进行关闭订单通知。
+                                                                </span>
+                                                            </p>
+                                                            <dl style="font-size: 14px; color: rgb(51, 51, 51); line-height: 18px;">
+                                                                <dd style="margin: 0px 0px 6px; padding: 0px; font-size: 12px; line-height: 22px;">
+                                                                    <p id="cTMail-sender" style="font-size: 14px; line-height: 26px; word-wrap: break-word; word-break: break-all; margin-top: 32px;">
+                                                                        此致
+                                                                        <br>
+                                                                        <strong>{{web_title}}</strong>
+                                                                    </p>
+                                                                </dd>
+                                                            </dl>
+                                                        </td>
+                                                        <td style="width:3.2%;max-width:30px;"></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <div id="cTMail-copy" style="text-align:center; font-size:12px; line-height:18px; color:#999">
+                                                <table style="width:100%;font-weight:300;margin-bottom:10px;border-collapse:collapse">
+                                                    <tbody>
+                                                    <tr style="font-weight:300">
+                                                        <td style="width:3.2%;max-width:30px;"></td>
+                                                        <td style="max-width:540px;">
+                                                            <p style="text-align:center; margin:20px auto 14px auto;font-size:12px;color:#999;">
+                                                                此为系统邮件，请勿回复。
+                                                                <a href="https://xpaypass.5v1.com/user/info"
+                                                                   style="text-decoration:none;word-break:break-all;word-wrap:normal; color: #333;" target="_blank">
+                                                                    取消订阅
+                                                                </a>
+                                                            </p>
+                                                            <p id="cTMail-rights" style="max-width: 100%; margin:auto;font-size:12px;color:#999;text-align:center;line-height:22px;">
+                                                                <img border="0" src="https://www.9o3.cn/wp-content/uploads/2023/01/8F87616F-B391-46E5-B9C2-D1B43D319872.jpeg"
+                                                                     style="width:64px; height:64px; margin:0 auto;">
+                                                                <br>
+                                                                微信客服
+                                                                <br>
+                                                                <span style="display:block;margin-top: 10px;">Copyright @ 2013-2024 Small morning code payment <br />Cloud. All Rights Reserved.{{web_title}}版权所有</span>
+                                                        </td>
+                                                        <td style="width:3.2%;max-width:30px;"></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td style="width:3%;max-width:30px;"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </span>
+                   <br>
+                </div>
+            </div>
+        </div>
+    </includetail>
+</div>
