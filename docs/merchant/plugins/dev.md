@@ -56,6 +56,19 @@ plugin = {
                         use_add_amount = 1,
                         -- 使用二维码登录流程
                         use_qrcode_login = 1,
+
+                          -- 增加自定义按钮
+                        actions = {
+                            {
+                                label = "唤醒",
+                                func = "action_wake", -- 为空则无操作
+                                type = "confirm", -- 操作类型 click:点击触发 confirm: 弹出是否确认 prompt: 输入内容 form: 弹出输入框
+                                -- form_items = {}, -- 是否需要输入内容格式跟formItems一致 待实现
+                                options = {
+                                    tip = "是否需要唤醒", -- 如果为 confirm,prompt 就弹出此内容为提示
+                                }
+                            }
+                        }
                     }
                 },
             },
@@ -219,6 +232,236 @@ function plugin.parseMsg(pMsg)
     return json.encode({
         err_code = 500,
         err_message = "未能匹配"
+    })
+end
+```
+
+
+### 支付数据渲染
+
+#### 参数说明
+
+`render`函数用于根据不同设备环境动态渲染支付数据，每次用户渲染二维码时都会重新请求此函数。如果不实现此函数，系统将使用默认渲染方式。
+
+- `pOrderInfo`: 订单信息
+- `pOldPayData`: 原始支付数据
+- `pAccountInfo`: 账户信息
+- `pDeviceInfo`: 设备信息，包含设备类型标识
+
+#### 案例
+```lua
+
+-- 支付数据渲染
+function plugin.render(pOrderInfo,pOldPayData,pAccountInfo,pDeviceInfo)
+    log.debug("渲染测试数据",pOrderInfo,pOldPayData,pAccountInfo,pDeviceInfo)
+    local vDeviceInfo = json.decode(pDeviceInfo)
+    local vOldPayData = json.decode(pOldPayData)
+
+    -- 如果是微信
+    if vDeviceInfo.is_wechat then
+        return json.encode({
+            error_code = 200,
+            error_message = "success",
+            action = "render", -- 为空不需要渲染 save 保存渲染数据 render 只渲染 不保存
+            data = {
+                type = "text",
+                content = "我在微信里面"
+            },  -- 返回的payData
+        })
+    end
+
+    -- 如果是qq
+    if vDeviceInfo.is_qq then
+        return json.encode({
+            error_code = 200,
+            error_message = "success",
+            action = "render", -- 为空不需要渲染 save 保存渲染数据 render 只渲染 不保存
+            data = {
+                type = "text",
+                content = "我在QQ里面"
+            },  -- 返回的payData
+        })
+    end
+
+    -- 如果是支付宝
+    if vDeviceInfo.is_alipay then
+        return json.encode({
+            error_code = 200,
+            error_message = "success",
+            action = "render", -- 为空不需要渲染 save 保存渲染数据 render 只渲染 不保存
+            data = {
+                type = "jump",
+                url= vOldPayData.qrcode
+            },  -- 返回的payData
+        })
+    end
+    -- 如果是浏览器
+    if vDeviceInfo.is_browser then
+        return json.encode({
+            error_code = 200,
+            error_message = "success",
+            action = "render", -- 为空不需要渲染 save 保存渲染数据 render 只渲染 不保存
+            data = {
+                type = "text",
+                content = "我在l浏览器里面"
+            },  -- 返回的payData
+        })
+    end
+
+    -- 如果是PC
+    if vDeviceInfo.is_pc then
+        return json.encode({
+            error_code = 200,
+            error_message = "success",
+            action = "render", -- 为空不需要渲染 save 保存渲染数据 render 只渲染 不保存
+            data = {
+                type = "text",
+                content = "我是PC"
+            },  -- 返回的payData
+        })
+    end
+
+
+    if vDeviceInfo.is_mobile then
+        return json.encode({
+            error_code = 200,
+            error_message = "success",
+            action = "render", -- 为空不需要渲染 save 保存渲染数据 render 只渲染 不保存
+            data = {
+                type = "text",
+                content = "我是手机"
+            },  -- 返回的payData
+        })
+    end
+
+
+    return json.encode({
+        error_code = 200,
+        error_message = "success",
+        action = "", -- 为空不需要渲染 save 保存渲染数据 render 只渲染 不保存
+        data = pOldPayData,  -- 返回的payData
+    })
+end
+```
+
+#### 返回说明
+
+   - 根据不同设备类型（浏览器、PC、移动设备）返回不同内容
+   - `action` 字段说明：
+     - 空值：不需要渲染,按照 `create` 方法返回的数据处理
+     - `save`：保存渲染数据
+     - `render`：只渲染不保存
+   - `data` 字段包含具体返回内容 格式等同`create`方法返回的内容
+
+
+
+### 生成登录二维码
+
+```lua
+-- 二维码登录
+function plugin.login_qrcode(pAccountInfo, pUserInfo, pParams)
+    local vParams = json.decode(pParams)
+    local vAccountInfo = json.decode(pAccountInfo)
+    local vAccountOption = json.decode(vAccountInfo.options)
+    local vUserInfo = json.decode(pUserInfo)
+
+    -- 获取服务端地址
+    local serverAddress = helper.channel_gateway_addr(vAccountOption.gateway)
+    if serverAddress == "" then
+        return json.encode({
+            err_code = 500,
+            err_message = "暂未配置支付网关"
+        })
+    end
+
+    ---- 省略过程
+
+    return json.encode({
+        -- 返回二维码
+        qrcode = qrcode,
+        -- 返回二维码相关参数 check 会一并携带返回
+        options = {
+            client_id = client_id
+        },
+        err_code = 200,
+        err_message = ""
+    })
+
+end
+```
+
+
+```lua
+
+
+-- 检查二维码登录状态
+function plugin.login_qrcode_check(pAccountInfo, pUserInfo, pParams)
+    local vParams = json.decode(pParams)
+    local vAccountInfo = json.decode(pAccountInfo)
+    local vAccountOption = json.decode(vAccountInfo.options)
+    -- 获取服务端地址
+    local serverAddress = helper.channel_gateway_addr(vAccountOption.gateway)
+    if serverAddress == "" then
+        return json.encode({
+            err_code = 500,
+            err_message = "暂未配置支付网关"
+        })
+    end
+
+    -- ....省略过程
+
+    helper.channel_account_set_option(vAccountInfo.id, "client_id",  vParams.client_id)
+
+    return json.encode({
+            err_code = 200,
+            err_message = string.format('登录成功 %s', returnInfo.Data.nick_name),
+            data = {
+                can_bind_token = false
+            }
+        })
+end
+```
+
+
+## 自定义按钮操作
+
+
+### 案例
+```lua
+plugin = {
+    info = {
+        channels = {
+            wxpay = {
+                {
+                    label = "微信",
+                    options = {
+                        ....
+                         -- 增加账号操作
+                        actions = {
+                            {
+                                label = "唤醒",
+                                func = "action_wake", -- 为空则无操作
+                                type = "confirm", -- 操作类型 click:点击触发 confirm: 弹出是否确认 prompt: 输入内容 form: 弹出输入框
+                                -- form_items = {}, -- 是否需要输入内容格式跟formItems一致 待实现
+                                options = {
+                                    tip = "是否需要唤醒", -- 如果为 confirm,prompt 就弹出此内容为提示
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+....
+
+
+function plugin.action_wake(pAccountInfo,pUserInfo,pParams)
+    return json.encode({
+        err_code = 200,
+        err_message = "唤醒请求已发送"
     })
 end
 ```

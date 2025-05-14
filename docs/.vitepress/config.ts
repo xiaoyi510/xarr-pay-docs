@@ -124,6 +124,7 @@ export default defineConfig({
               text: "插件", items: [
                 { text: "安装", link: "/merchant/plugins/install" },
                 { text: "开发", link: "/merchant/plugins/dev" },
+                { text: "功能函数", link: "/merchant/plugins/funcs" },
               ]
             },
             {
@@ -143,8 +144,8 @@ export default defineConfig({
                 {
                   text: "通知模板",
                   items: [
-                      { text: "模板配置案例", link: "/merchant/templates/notification/index" },
-                      { text: "即时消息", link: "/merchant/templates/notification/websocket-tip" },
+                    { text: "模板配置案例", link: "/merchant/templates/notification/index" },
+                    { text: "即时消息", link: "/merchant/templates/notification/websocket-tip" },
                   ]
                 }
 
