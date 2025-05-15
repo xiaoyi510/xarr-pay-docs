@@ -15,6 +15,9 @@ hero:
       text: 快速开始
       link: /start
     - theme: alt
+      text: 查看官网
+      link: https://www.xarr.cn
+    - theme: alt
       text: 查看博客
       link: https://blog.52nyg.com
 
@@ -35,35 +38,14 @@ features:
     details: 高清无码教程
     link: /merchant
     linkText: 立即查看
-  # - title: 个人版演示
-  #   details: |
-  #     点击跳转前台地址
-  #     <br/>
-  #     账号：usertest
-  #     <br/>
-  #     密码：123456
-  #   link: 'https://pre-person.xarr.cn'
-  # - title: 商户版演示
-  #   details: | 
-  #     点击跳转前台地址
-  #     <br/>
-  #     后台地址：/admin
-  #     <br/>
-  #     账号密码：admin
-  #     <br/>
-  #     前台账号：user
-  #     <br/>
-  #     前台密码：123456
-      
-  #   link: 'https://pre-merchant.xarr.cn/'
   
 ---
 <style>
 :root {
     --vp-home-hero-name-color: transparent;
-    --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #bd34fe 30%, #41d1ff);
+    --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #1e88e5 30%, #64b5f6);
   
-    --vp-home-hero-image-background-image: linear-gradient(-45deg, #bd34fe 50%, #47caff 50%);
+    --vp-home-hero-image-background-image: linear-gradient(-45deg, #1e88e5 50%, #64b5f6 50%);
 
     --vp-home-hero-image-filter: blur(44px);
   }

@@ -151,8 +151,10 @@ export default defineConfig({
                 {
                   text: "支付模板",
                   items: [
-                    { text: "模板引擎", link: "/merchant/templates/pay/index" },
-                    { text: "预设变量", link: "/merchant/templates/pay/variable" },
+                    { text: "模板开发", link: "/merchant/templates/pay/index" },
+                    { text: "模板函数", link: "/merchant/templates/pay/funcs" },
+                    { text: "模板变量", link: "/merchant/templates/pay/variable" },
+                    { text: "模板API", link: "/merchant/templates/pay/api" },
                   ]
                 }
 
