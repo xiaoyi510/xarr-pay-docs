@@ -1,0 +1,57 @@
+---
+description: 
+globs: *.md
+alwaysApply: false
+---
+# VitePress 项目结构与依赖说明
+
+本项目是基于 [VitePress](mdc:docs/.vitepress/config.ts) 的文档系统，支持以下前端构建扩展：
+
+- [autoprefixer](mdc:package.json)
+- [postcss](mdc:postcss.config.js)
+- [tailwindcss](mdc:tailwind.config.js)
+
+## 相关配置文件
+- VitePress 配置：[docs/.vitepress/config.ts](mdc:docs/.vitepress/config.ts)
+- PostCSS 配置：[postcss.config.js](mdc:postcss.config.js)
+- TailwindCSS 配置：[tailwind.config.js](mdc:tailwind.config.js)
+- 依赖声明：[package.json](mdc:package.json)
+
+## 开发流程
+1. 安装依赖：
+   ```bash
+   yarn install
+   ```
+2. 本地开发预览：
+   ```bash
+   yarn docs:dev
+   ```
+3. 构建静态文件：
+   ```bash
+   yarn docs:build
+   ```
+4. 预览构建产物：
+   ```bash
+   yarn docs:preview
+   ```
+
+## 依赖管理
+- 所有依赖均在 [package.json](mdc:package.json) 中声明。
+- 推荐使用 `yarn` 进行依赖管理，避免包管理器混用。
+- 如需添加/升级依赖，请同步更新 `package.json` 并说明用途。
+
+## 常见扩展点
+- Markdown 插件可在 [docs/.vitepress/config.ts](mdc:docs/.vitepress/config.ts) 的 `markdown.config` 中配置。
+- 主题和样式扩展建议通过 [tailwind.config.js](mdc:tailwind.config.js) 和自定义 CSS 文件实现。
+- PostCSS 插件可在 [postcss.config.js](mdc:postcss.config.js) 中扩展。
+
+## 相关注释说明
+- 各配置文件均包含注释，便于理解参数含义。
+- 如需自定义 VitePress 行为，优先查阅官方文档和本地注释。
+- 主题、导航、侧边栏等结构详见 [docs/.vitepress/config.ts](mdc:docs/.vitepress/config.ts)。
+
+---
+如需扩展或修改构建工具相关配置，请优先查阅上述文件，并遵循本规则进行开发和维护。
+
+
+

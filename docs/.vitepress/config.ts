@@ -147,6 +147,13 @@ export default defineConfig({
                     { text: "模板配置案例", link: "/merchant/templates/notification/index" },
                     { text: "即时消息", link: "/merchant/templates/notification/websocket-tip" },
                   ]
+                },
+                {
+                  text: "支付模板",
+                  items: [
+                    { text: "模板引擎", link: "/merchant/templates/pay/index" },
+                    { text: "预设变量", link: "/merchant/templates/pay/variable" },
+                  ]
                 }
 
               ]

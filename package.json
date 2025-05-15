@@ -2,7 +2,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "docs:dev": "vitepress dev docs",
+    "docs:dev": "vitepress dev docs --port 3514",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
