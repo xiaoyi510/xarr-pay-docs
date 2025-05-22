@@ -9,14 +9,14 @@
 ## 手动安装
 
 ### 前置需求
-插件文件目录格式: `插件名/plugin.lua`
+插件文件目录格式: `插件名/pay/plugin.lua`
 
 ### 安装
 将插件名目录直接上传至程序目录中的plugins目录下
 
-上传后最终目录结构为: `plugins/插件名/plugin.lua`
+上传后最终目录结构为: `plugins/pay/插件名/plugin.lua`
 
 ### 应用商店 [加载本地插件]
 
 ### 卸载
-删除 `plugins/插件名` 目录后重启系统
+删除 `plugins/pay/插件名` 目录后重启系统
