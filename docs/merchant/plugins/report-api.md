@@ -85,7 +85,7 @@ curl -X POST "https://yourdomain.com/api/report/123456" \
 | ------------------ | ------ | ---- | ------------------------------ |
 | amount             | int    | 是   | 支付金额                       |
 | pay_type           | string | 是   | 支付类型（qqpay/alipay/wxpay） |
-| channel_code       | string | 是   | 支付通道代码                       |
+| channel_code       | string | 是   | 支付通道代码                   |
 | remark             | string | 否   | 备注                           |
 | pay_time           | string | 否   | 支付时间                       |
 | coll_user          | string | 否   | 收款账号                       |
@@ -163,6 +163,94 @@ curl -X POST "https://yourdomain.com/api/report/123456/heart" \
 
 ```bash
 curl "https://yourdomain.com/api/report/123456/heart?client_name=客户端A&timestamp=1710000000&sign=xxxxxx"
+```
+
+---
+
+## 4. 第三方账号上报数据
+
+- **接口地址**：`/api/report/third-account`
+- **请求方式**：`GET/POST`
+- **说明**：第三方账号（如A账号代理获取其他账号的订单）进行订单上报。
+
+
+### 请求参数
+
+| 字段         | 类型   | 必填 | 说明           |
+| ------------ | ------ | ---- | -------------- |
+| account      | string | 是   | 上报账号       |
+| type         | int    | 是   | 账号类型       |
+| sub_account  | string | 是   | 监控子账号     |
+| amount       | int    | 是   | 支付金额       |
+| pay_type     | string | 是   | 支付类型       |
+| channel_code | string | 是   | 支付渠道       |
+| remark       | string | 否   | 备注           |
+| out_order_id | string | 否   | 外部订单号     |
+| order_id     | string | 否   | 平台订单号     |
+| timestamp    | int    | 是   | 时间戳         |
+| sign         | string | 是   | 签名           |
+
+**POST 请求示例：**
+
+```bash
+curl -X POST "https://yourdomain.com/api/report/third-account" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "account": "A001",
+    "type": 1,
+    "sub_account": "B001",
+    "amount": 100,
+    "pay_type": "alipay",
+    "channel_code": "ali_qr",
+    "remark": "第三方订单",
+    "out_order_id": "out123",
+    "order_id": "order456",
+    "timestamp": 1710000000,
+    "sign": "xxxxxx"
+  }'
+```
+
+**GET 请求示例：**
+
+```bash
+curl "https://yourdomain.com/api/report/third-account?account=A001&type=1&sub_account=B001&amount=100&pay_type=alipay&channel_code=ali_qr&timestamp=1710000000&sign=xxxxxx"
+```
+
+---
+
+## 5. 第三方账号心跳
+
+- **接口地址**：`/api/report/third-account/heart`
+- **请求方式**：`GET/POST`
+- **说明**：第三方账号心跳上报。
+
+
+### 请求参数
+
+| 字段      | 类型   | 必填 | 说明     |
+| --------- | ------ | ---- | -------- |
+| account   | string | 是   | 账号     |
+| type      | int    | 是   | 账号类型 |
+| timestamp | int    | 是   | 时间戳   |
+| sign      | string | 是   | 签名     |
+
+**POST 请求示例：**
+
+```bash
+curl -X POST "https://yourdomain.com/api/report/third-account/heart" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "account": "A001",
+    "type": 1,
+    "timestamp": 1710000000,
+    "sign": "xxxxxx"
+  }'
+```
+
+**GET 请求示例：**
+
+```bash
+curl "https://yourdomain.com/api/report/third-account/heart?account=A001&type=1&timestamp=1710000000&sign=xxxxxx"
 ```
 
 ---
