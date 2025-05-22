@@ -30,7 +30,7 @@
 | pid          | int32  | 是   | 商户 ID    |
 
 :::tip
-order_id 与 out_order_id、pid 为二选一关系，不能同时为空
+order_id 与 out_order_id、pid 为二选一关系，不能同时为空 (版本1.4.8.3+才支持)
 :::
 
 ### 响应参数
@@ -111,7 +111,7 @@ order_id 与 out_order_id、pid 为二选一关系，不能同时为空
 | pid          | int32  | 是   | 商户 ID    |
 
 :::tip
-order_id 与 out_order_id、pid 为二选一关系，不能同时为空
+order_id 与 out_order_id、pid 为二选一关系，不能同时为空 (版本1.4.8.3+才支持)
 :::
 
 ### 响应参数
@@ -149,7 +149,7 @@ order_id 与 out_order_id、pid 为二选一关系，不能同时为空
 | pid          | int32  | 是   | 商户 ID    |
 
 :::tip
-order_id 与 out_order_id、pid 为二选一关系，不能同时为空
+order_id 与 out_order_id、pid 为二选一关系，不能同时为空 (版本1.4.8.3+才支持)
 :::
 
 ### 响应参数
