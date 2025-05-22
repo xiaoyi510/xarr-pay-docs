@@ -17,38 +17,45 @@
 **接口地址**：`POST /api/order/info`
 
 **接口说明**：
+
 - 获取订单详情，必须首先调用，后续接口依赖本接口返回内容。
 - 如果这里订单状态就已经失效,那就不需要请求后面的接口了。
 
 ### 请求参数
 
-| 参数名   | 类型   | 必填 | 说明     |
-|----------|--------|------|----------|
-| order_id | string | 是   | 订单号   |
+| 参数名       | 类型   | 必填 | 说明       |
+| ------------ | ------ | ---- | ---------- |
+| order_id     | string | 是   | 订单号     |
+| out_order_id | string | 是   | 外部订单号 |
+| pid          | int32  | 是   | 商户 ID    |
+
+:::tip
+order_id 与 out_order_id、pid 为二选一关系，不能同时为空
+:::
 
 ### 响应参数
 
-| 参数名              | 类型   | 说明                         |
-|---------------------|--------|------------------------------|
-| subject             | string | 订单标题                     |
-| out_order_id        | string | 外部订单号                   |
-| order_id            | string | 订单号                       |
-| status              | int    | 订单状态码                   |
-| amount              | int    | 订单金额（分）               |
-| trade_amount        | int    | 交易金额（分）               |
-| expire_time         | int    | 过期时间戳（秒）             |
-| pay_type            | string | 支付方式标识                 |
-| pay_type_text       | string | 支付方式文本                 |
-| create_time         | string | 创建时间                     |
-| return_uri          | string | 支付完成后返回 URI（仅成功返回）|
-| pay_type_logo       | string | 支付方式 logo                |
-| content             | string | 订单内容                     |
-| service_qq          | string | 客服 QQ                      |
-| pay_tip             | string | 支付提示                     |
-| pay_payed_wait_time | int    | 支付完成后等待时间（秒）     |
-| pay_account_tip     | object | 渠道账号提示信息             |
-| └─ tip              | string | 提示内容                     |
-| └─ tip_cover        | int    | 提示覆盖类型                 |
+| 参数名              | 类型   | 说明                             |
+| ------------------- | ------ | -------------------------------- |
+| subject             | string | 订单标题                         |
+| out_order_id        | string | 外部订单号                       |
+| order_id            | string | 订单号                           |
+| status              | int    | 订单状态码                       |
+| amount              | int    | 订单金额（分）                   |
+| trade_amount        | int    | 交易金额（分）                   |
+| expire_time         | int    | 过期时间戳（秒）                 |
+| pay_type            | string | 支付方式标识                     |
+| pay_type_text       | string | 支付方式文本                     |
+| create_time         | string | 创建时间                         |
+| return_uri          | string | 支付完成后返回 URI（仅成功返回） |
+| pay_type_logo       | string | 支付方式 logo                    |
+| content             | string | 订单内容                         |
+| service_qq          | string | 客服 QQ                          |
+| pay_tip             | string | 支付提示                         |
+| pay_payed_wait_time | int    | 支付完成后等待时间（秒）         |
+| pay_account_tip     | object | 渠道账号提示信息                 |
+| └─ tip              | string | 提示内容                         |
+| └─ tip_cover        | int    | 提示覆盖类型                     |
 
 ### 响应示例
 
@@ -86,6 +93,7 @@
 | 3      | 关闭     |
 | 4      | 超时     |
 | 5      | 创建失败 |
+
 ---
 
 ## 2. 获取订单语音播报信息
@@ -94,17 +102,25 @@
 
 ### 请求参数
 
-| 参数名   | 类型   | 必填 | 说明   |
-|----------|--------|------|--------|
-| order_id | string | 是   | 订单号 |
+### 请求参数
+
+| 参数名       | 类型   | 必填 | 说明       |
+| ------------ | ------ | ---- | ---------- |
+| order_id     | string | 是   | 订单号     |
+| out_order_id | string | 是   | 外部订单号 |
+| pid          | int32  | 是   | 商户 ID    |
+
+:::tip
+order_id 与 out_order_id、pid 为二选一关系，不能同时为空
+:::
 
 ### 响应参数
 
-| 参数名        | 类型   | 说明         |
-|---------------|--------|--------------|
-| audio_enable  | int    | 是否启用语音播报（1启用/0禁用）|
-| audio_url     | string | 语音播报 URL |
-| audio_content | string | 语音内容     |
+| 参数名        | 类型   | 说明                              |
+| ------------- | ------ | --------------------------------- |
+| audio_enable  | int    | 是否启用语音播报（1 启用/0 禁用） |
+| audio_url     | string | 语音播报 URL                      |
+| audio_content | string | 语音内容                          |
 
 ### 响应示例
 
@@ -124,23 +140,27 @@
 
 ### 请求参数
 
-| 参数名      | 类型   | 必填 | 说明         |
-|-------------|--------|------|--------------|
-| order_id    | string | 否   | 订单号       |
-| out_order_id| string | 否   | 外部订单号   |
-| pid         | int    | 否   | 商户ID       |
+### 请求参数
 
-> 至少需传递 `order_id` 或 `out_order_id`+`pid`。
+| 参数名       | 类型   | 必填 | 说明       |
+| ------------ | ------ | ---- | ---------- |
+| order_id     | string | 是   | 订单号     |
+| out_order_id | string | 是   | 外部订单号 |
+| pid          | int32  | 是   | 商户 ID    |
+
+:::tip
+order_id 与 out_order_id、pid 为二选一关系，不能同时为空
+:::
 
 ### 响应参数
 
-| 参数名              | 类型   | 说明                         |
-|---------------------|--------|------------------------------|
-| status              | int    | 订单状态码                   |
-| expire_time         | int    | 过期时间戳（秒）             |
-| return_uri          | string | 支付完成后返回 URI（仅成功返回）|
-| is_auto_open        | int    | 是否自动打开支付页面（1是/0否）|
-| pay_payed_wait_time | int    | 支付完成后等待时间（秒）     |
+| 参数名              | 类型   | 说明                              |
+| ------------------- | ------ | --------------------------------- |
+| status              | int    | 订单状态码                        |
+| expire_time         | int    | 过期时间戳（秒）                  |
+| return_uri          | string | 支付完成后返回 URI（仅成功返回）  |
+| is_auto_open        | int    | 是否自动打开支付页面（1 是/0 否） |
+| pay_payed_wait_time | int    | 支付完成后等待时间（秒）          |
 
 ### 响应示例
 
@@ -160,25 +180,27 @@
 
 **接口地址**：`POST /api/order/qrcode`
 
+**接口说明**：安全性关系,此处只能传入order_id获取
+
 ### 请求参数
 
 | 参数名   | 类型   | 必填 | 说明   |
-|----------|--------|------|--------|
+| -------- | ------ | ---- | ------ |
 | order_id | string | 是   | 订单号 |
 
 ### 响应参数
 
-| 参数名             | 类型   | 说明                         |
-|--------------------|--------|------------------------------|
-| type               | string | 二维码类型                   |
-| qrcode_data        | string | 二维码数据                   |
-| qrcode             | string | 二维码图片 URL               |
-| scheme             | string | 支付 scheme                  |
-| uri                | string | 支付 URI                     |
-| content            | string | 支付内容                     |
-| actual_amount      | string | 实际需支付金额（外部）       |
-| actual_account     | string | 外部支付账号                 |
-| actual_account_type| string | 外部支付账号类型             |
+| 参数名              | 类型   | 说明                   |
+| ------------------- | ------ | ---------------------- |
+| type                | string | 二维码类型             |
+| qrcode_data         | string | 二维码数据             |
+| qrcode              | string | 二维码图片 URL         |
+| scheme              | string | 支付 scheme            |
+| uri                 | string | 支付 URI               |
+| content             | string | 支付内容               |
+| actual_amount       | string | 实际需支付金额（外部） |
+| actual_account      | string | 外部支付账号           |
+| actual_account_type | string | 外部支付账号类型       |
 
 ### 响应示例
 
@@ -204,7 +226,5 @@
 - 响应参数如有变动，请以实际接口返回为准。
 - 建议所有请求追加 `?_time=时间戳` 避免缓存。
 - 订单相关接口需先获取订单详情，后续接口依赖订单信息。
-- 如需扩展接口或有特殊需求，请联系后端开发团队。
 
 ---
-
