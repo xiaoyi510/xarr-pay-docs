@@ -145,6 +145,7 @@ export default withMermaid({
               items: [
                 { text: "安装", link: "/merchant/plugins/install" },
                 { text: "开发", link: "/merchant/plugins/dev" },
+                { text: "上报API", link: "/merchant/plugins/report-api" },
                 { text: "功能函数", link: "/merchant/plugins/funcs" },
               ],
             },
