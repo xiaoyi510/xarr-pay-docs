@@ -85,7 +85,13 @@ plugin = {
 
             -- 定时任务,此方法为系统级别的定时任务,不跟订单号挂钩
             crontab_list = {
-                { crontab = "*/50 * * * * *", fun = "sync_rate", name = "同步费率" },
+               {
+                crontab = "*/15 * * * * *",  -- 定时任务结构 "秒 分 时 日 月 周" 例如每分钟执行: "0 * * * * *"
+                fun = "check_account", -- 具体func名称
+                args = "", -- 执行时传入对应的func
+                name = "拉卡拉检查账号状态", -- 本插件内唯一
+                scope = "account" -- 目标范围 order 订单(只查询订单未支付状态) account 账号 (只查询账号在线状态) system 全局
+              },
             },
             -- 配置项,插件提供什么全局的配置项,可选 不需要时请勿传入
             options = {
@@ -464,4 +470,34 @@ function plugin.action_wake(pAccountInfo,pUserInfo,pParams)
         err_message = "唤醒请求已发送"
     })
 end
+```
+
+
+
+
+## account级别的定时任务
+
+```lua
+-- 定时任务
+-- pAccountInfo 账号信息
+-- pPluginOption 插件配置
+-- pExtArgs 扩展参数 在crontab中配置的args
+function plugin.check_account(pAccountInfo, pPluginOption, crontabExtArgs)
+    local vAccountInfo = json.decode(pAccountInfo)
+    local vAccountOptions = json.decode(vAccountInfo.options)
+    local vParams = json.decode(vAccountInfo.options)
+end
+```
+
+## order级别的定时任务
+
+```lua
+-- 检查订单
+-- pOrderInfo 订单信息
+-- pAccountInfo 账号信息
+-- pPluginOption 插件配置
+-- crontabExtArgs 扩展参数 在crontab中配置的args
+function plugin.check_order(pOrderInfo, pAccountInfo, pPluginOption, crontabExtArgs)
+end
+
 ```
