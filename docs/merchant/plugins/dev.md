@@ -187,6 +187,62 @@ function plugin.create(pOrderInfo, pluginOptions, ...)
 end
 ```
 
+### type 类型列表
+
+| 类型值 | 名称 | 描述 | 使用字段 |
+|-------|------|------|---------|
+| `qrcode` | 二维码响应 | 显示二维码以供用户扫码支付 | `qrcode_file`: 二维码图片文件路径<br>`qrcode`: 二维码内容字符串 |
+| `jump` | 跳转响应 | 跳转到某个特定地址 | `url`: 需要跳转的目标URL |
+| `html` | HTML响应 | 返回HTML代码供前端展示 | `content`: 需要展示的HTML代码内容 |
+| `pre` | 预生成响应 | 前置操作，例如需要微信授权后才能继续支付流程 | - |
+| `pay_page` | 支付页面 | 跳转到支付页面 | - |
+| `tip_success` | 成功提示 | 跳转到成功提示页面 | `content`: 成功提示的内容 |
+| `tip_warning` | 警告提示 | 跳转到警告提示页面 | `content`: 警告提示的内容 |
+| `tip_error` | 错误提示 | 跳转到错误提示页面 | `content`: 错误提示的内容 |
+| `tip_info` | 信息提示 | 跳转到信息提示页面 | `content`: 信息提示的内容 |
+
+## 使用示例
+
+### 二维码响应
+```json
+{
+  "type": "qrcode",
+  "qrcode_file": "/path/to/qrcode.png",
+  "qrcode": "weixin://wxpay/bizpayurl?pr=abc123"
+}
+```
+
+### 跳转响应
+```json
+{
+  "type": "jump",
+  "url": "https://example.com/payment"
+}
+```
+
+### HTML响应
+```json
+{
+  "type": "html",
+  "content": "<form action='https://payment.com/pay'>....</form>"
+}
+```
+
+### 支付页面
+```json
+{
+  "type": "pay_page"
+}
+```
+
+### 提示响应
+```json
+{
+  "type": "tip_success",
+  "content": "支付已完成，感谢您的购买！"
+}
+```
+
 ### notify 支付异步回调
 
 ```lua
@@ -243,7 +299,7 @@ end
 ```
 
 
-### 支付数据渲染
+### 支付数据重新渲染
 
 #### 参数说明
 
@@ -358,7 +414,6 @@ end
      - `save`：保存渲染数据
      - `render`：只渲染不保存
    - `data` 字段包含具体返回内容 格式等同`create`方法返回的内容
-
 
 
 ### 生成登录二维码
