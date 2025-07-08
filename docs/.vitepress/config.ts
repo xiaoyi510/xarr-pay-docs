@@ -117,6 +117,10 @@ export default withMermaid({
               ],
             },
             {
+              text: "命令行",
+              link: "/merchant/cli/index"
+            },
+            {
               text: "通道",
               items: [
                 {
