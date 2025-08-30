@@ -2,8 +2,8 @@
 layout: home
 
 hero:
-  name: 文档中心
-  text: 一站式支付服务,提供一流的交互,高性能的服务
+  name: XArr官方文档中心
+  text: 提供一站式XArrPay支付服务,一流的交互,高性能的服务
   tagline: 高性能, 高安全, 高并发, 多通道, 稳, 无刻意后门~~
   image:
     src: /assets/images/logo.png
@@ -20,6 +20,9 @@ hero:
     - theme: alt
       text: 查看博客
       link: https://blog.52nyg.com
+    - theme: alt
+      text: 查看论坛
+      link: https://forum.uf3.cn
 
 features:
   - title: 前去购买
