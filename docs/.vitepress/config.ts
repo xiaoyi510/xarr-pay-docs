@@ -9,8 +9,8 @@ import { withMermaid } from "vitepress-plugin-mermaid";
 
 export default withMermaid({
   lang: "zh-CN",
-  title: "XArr 文档中心",
-  description: "一站式服务",
+  title: "XArr 官网网站-文档中心",
+  description: "XArrPay 支付系统官方文档中心,提供XArrPay的各项文档信息",
   lastUpdated: true,
   mermaid: {
     // 配置参考：https://mermaid.js.org/config/setup/modules/mermaidAPI.html#mermaidapi-configuration-defaults
