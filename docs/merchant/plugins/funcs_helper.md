@@ -286,6 +286,31 @@
 | ---------- | ------------ |
 | boolean    | 验证是否成功 |
 
+
+#### helper.rsa_gen_key_pair
+描述: 生成RSA密钥对
+
+调用参数：
+| 参数      | 参数类型 | 参数描述                  |
+| --------- | -------- | ------------------------- |
+| bits   | number   | 密钥长度，可选，默认2048                  |
+| algorithm      | string   | 签名算法，可选，可选值为RSA/RSA2/SM2(国密)，默认RSA2          |
+| stripHeader | bool   | 是否去除PEM格式头尾，可选，默认true |
+| stripNewlines    | bool   | 是否去除换行符，可选，默认true              |
+
+返回值：
+| 返回值类型 | 描述         |
+| ---------- | ------------ |
+| boolean    | 验证是否成功 |
+| table    | 验证是否成功 |
+
+table: 包含以下字段:
+  - private_key: string，私钥，根据参数可能保留或去除PEM格式头尾和换行符
+  - public_key: string，公钥，根据参数可能保留或去除PEM格式头尾和换行符
+  - algorithm: string，使用的签名算法
+  - bits: number，实际使用的密钥长度
+
+
 ### 配置管理
 
 #### helper.get_plugin_option
