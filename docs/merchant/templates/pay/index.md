@@ -11,7 +11,8 @@
 ```
 templates/pay/
   └─ [主题名称]/
-      ├─ index.html           # 支付页主文件
+      ├─ index.html          # 支付页主文件
+      ├─ template.json       # 主题基础描述
       └─ assets/             # 静态资源目录（可被外部访问）
           ├─ js/             # JavaScript 资源
           ├─ css/            # 样式资源
@@ -21,9 +22,24 @@ templates/pay/
 
 - `[主题名称]`：自定义主题文件夹名称，便于多主题管理。
 - `index.html`：支付页模板主入口文件。
+- `template.json`：主题基础信息。
 - `assets/`：所有静态资源均应放置于此，避免主目录暴露敏感文件。
 
 ---
+
+> template.json 结构如下
+
+```json
+{
+  "name": "现代浮窗风格支付模板",
+  "version": "1.0.0",
+  "description": "现代浮窗风格支付模板",
+  "author": "XArrPay",
+  "license": "MIT",
+  "screenshot": "screenshot.png" # 主题缩略图
+}
+
+```
 
 ## 二、资源引用规范
 
