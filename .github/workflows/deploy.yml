@@ -50,14 +50,14 @@ jobs:
         with:
           path: docs/.vitepress/dist
 
-      - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: docs/.vitepress/dist/
-          server-dir: /
+      # - name: FTP Deploy
+      #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      #   with:
+      #     server: ${{ secrets.FTP_SERVER }}
+      #     username: ${{ secrets.FTP_USERNAME }}
+      #     password: ${{ secrets.FTP_PASSWORD }}
+      #     local-dir: docs/.vitepress/dist/
+      #     server-dir: /
 
   # 部署工作
   deploy:
