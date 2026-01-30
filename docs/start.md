@@ -68,11 +68,6 @@ PS: 切勿相信授权转让等, 一经发现会封授权,且无售后服务,只
 
 ## 查看系统文档
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-  <a href="/person/" class="block bg-white rounded-xl shadow hover:shadow-lg transition-all duration-200 border border-gray-100 hover:border-blue-400 p-8">
-    <h3 class="text-lg font-bold text-blue-800 mb-2 underline underline-offset-4 decoration-blue-400">个人版</h3>
-    <p class="text-gray-700 text-sm mb-4">适合个人站长使用的版本，功能完整，易于部署</p>
-    <span class="inline-block text-blue-500 text-sm font-medium hover:underline">点我前去查看文档 →</span>
-  </a>
   <a href="/merchant/" class="block bg-white rounded-xl shadow hover:shadow-lg transition-all duration-200 border border-gray-100 hover:border-blue-400 p-8">
     <h3 class="text-lg font-bold text-blue-800 mb-2 underline underline-offset-4 decoration-blue-400">商户版</h3>
     <p class="text-gray-700 text-sm mb-4">适合企业运营的版本，提供更多高级功能</p>
