@@ -30,11 +30,6 @@ features:
     details: 前往授权中心进行下载
     link: 'https://auth.xarr.cn'
     linkText: 立即前往
-  - title: 个人版文档
-    icon: 🛒
-    details: 高清无码教程
-    link: /person
-    linkText: 立即查看
     
   - title: 商户版版文档
     icon: 🛒
