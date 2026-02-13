@@ -67,7 +67,7 @@ export default withMermaid({
     externalLinkIcon: true,
     nav: [
       { text: "主页", link: "/" },
-{ text: "XArrPay商户版", link: "/merchant" },
+      { text: "XArrPay商户版", link: "/merchant" },
       { text: "授权中心", link: "https://auth.xarr.cn" },
       { text: "博客", link: "https://blog.52nyg.com" },
       { text: "官方网站", link: "https://www.xarr.cn" },
@@ -75,7 +75,7 @@ export default withMermaid({
     ],
 
     sidebar: {
-"/merchant/": [
+      "/merchant/": [
         {
           text: "XArrPay商户版文档",
           items: [
@@ -191,7 +191,7 @@ export default withMermaid({
     },
     footer: {
       message: "高性能,安全,快速 就选XArr.",
-      copyright: "Copyright © 2022-present 包子",
+      copyright: "Copyright © 2026 包子",
     },
   },
 });

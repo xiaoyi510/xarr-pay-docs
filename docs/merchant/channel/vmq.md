@@ -1,17 +1,21 @@
-# v免签
-v免签官方源码：https://github.com/szvone/vmqphp
+# V免签通道配置
 
-v免签安卓监控端：https://github.com/szvone/VmqApk
+V免签是一个免签约支付监控方案，通过安卓手机监控收款通知实现自动回调。
 
+V免签官方源码：[vmqphp](https://github.com/szvone/vmqphp)
 
-### 提供信息
+V免签安卓监控端：[VmqApk](https://github.com/szvone/VmqApk)
 
-如:
-```
-网关地址
-http://vmq.xxxx.com/
-商户PID
-10000
-商户密钥
-51113f199e537f4f77a45019d04db8ae
-```
+## 配置说明
+
+在 XArrPay 后台添加 V免签通道时，需要填写以下信息：
+
+| 配置项 | 说明 | 示例 |
+|--------|------|------|
+| 网关地址 | V免签服务端地址 | `http://vmq.xxxx.com/` |
+| 商户PID | V免签平台中的商户ID | `10000` |
+| 商户密钥 | V免签平台中的通讯密钥 | 在V免签后台获取 |
+
+::: tip 提示
+确保 V免签服务端已正常运行且安卓监控端在线，否则无法正常接收支付回调。
+:::
