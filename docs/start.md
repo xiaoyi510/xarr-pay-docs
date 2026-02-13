@@ -15,32 +15,10 @@ XArrPay 提供了商户版,以满足企业运营的需求,本系统是专业的�
 * 程序在线更新,持续为您的系统保驾护航
 
 
-### 演示站
-
-
-
-
-
-#### XArrPay商户版
-
-首页: https://pre-merchant.xarr.cn/
-
-后台: https://pre-merchant.xarr.cn/admin
-
-商户账号: user
-商户密码: 123456
-
-管理账号: amdin
-管理密码: 123456
-
-
-### 版本区分
-* 商户版适合企业运营
-
 ## 购买
 
 ### 提供服务
-* **免费升级**, 不会版本不一样就重新收一份钱,当然不同产品会区分,如个人版和商户版两个
+* **免费升级**, 不会版本不一样就重新收一份钱
 * **永久使用**, 当然你得买的是永久套餐~
 * **安全保障**, 系统将会持续更新和修复bug
 * **代安装**, 购买产品后提供一次免费安装服务, 如在授权商处购买,则联系对应授权商享受此服务
@@ -63,22 +41,6 @@ PS: 切勿相信授权转让等, 一经发现会封授权,且无售后服务,只
 * Nginx
 * Docker
 * Lua
-
-
-
-## 查看系统文档
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-  <a href="/merchant/" class="block bg-white rounded-xl shadow hover:shadow-lg transition-all duration-200 border border-gray-100 hover:border-blue-400 p-8">
-    <h3 class="text-lg font-bold text-blue-800 mb-2 underline underline-offset-4 decoration-blue-400">商户版</h3>
-    <p class="text-gray-700 text-sm mb-4">适合企业运营的版本，提供更多高级功能</p>
-    <span class="inline-block text-blue-500 text-sm font-medium hover:underline">点我前去查看文档 →</span>
-  </a>
-</div>
-
-
-
-## 版权信息
-版权所有 Copyright @2022-Nerver 包子
 
 
 ## 警告

@@ -67,42 +67,15 @@ export default withMermaid({
     externalLinkIcon: true,
     nav: [
       { text: "主页", link: "/" },
-      { text: "XArrPay个人版", link: "/person" },
-      { text: "XArrPay商户版", link: "/merchant" },
+{ text: "XArrPay商户版", link: "/merchant" },
       { text: "授权中心", link: "https://auth.xarr.cn" },
       { text: "博客", link: "https://blog.52nyg.com" },
+      { text: "官方网站", link: "https://www.xarr.cn" },
+      { text: "合规声明", link: "/compliance" },
     ],
 
     sidebar: {
-      "/person/": [
-        {
-          text: "XArrPay个人版文档",
-          items: [
-            { text: "快速开始", link: "/person" },
-            {
-              text: "安装",
-              items: [
-                { text: "环境要求", link: "/person/install/" },
-                { text: "下载安装包", link: "/person/install/download" },
-                { text: "宝塔-Go项目安装", link: "/person/install/bt" },
-                { text: "Docker", link: "/person/install/" },
-              ],
-            },
-            {
-              text: "通道",
-              items: [
-                { text: "支付宝商家账单", link: "/person/channel/alipay_bill" },
-              ],
-            },
-            {
-              text: "常见问题",
-              items: [{ text: "常见问题", link: "/person/questions/" }],
-            },
-            // ...
-          ],
-        },
-      ],
-      "/merchant/": [
+"/merchant/": [
         {
           text: "XArrPay商户版文档",
           items: [
@@ -127,6 +100,10 @@ export default withMermaid({
                   text: "支付宝",
                   items: [
                     { text: "账单模式", link: "/merchant/channel/alipay_bill" },
+                    { text: "H5支付", link: "/merchant/channel/alipay_h5" },
+                    { text: "手机网站支付", link: "/merchant/channel/alipay_wap" },
+                    { text: "电脑网站支付", link: "/merchant/channel/alipay_pc" },
+                    { text: "当面付", link: "/merchant/channel/alipay_face" },
                   ],
                 },
                 {
@@ -136,12 +113,18 @@ export default withMermaid({
                       text: "微信JSAPI",
                       link: "/merchant/channel/wxpay_jsapi",
                     },
+                    {
+                      text: "微信Native(V3)",
+                      link: "/merchant/channel/wxpay_native",
+                    },
                   ],
                 },
                 { text: "易支付", link: "/merchant/channel/epay" },
                 { text: "银联前置", link: "/merchant/channel/union" },
                 { text: "京东收银台", link: "/merchant/channel/jdsyt" },
                 { text: "V免签", link: "/merchant/channel/vmq" },
+                { text: "计全支付", link: "/merchant/channel/jqpay" },
+                { text: "虎皮椒", link: "/merchant/channel/xunhupay" },
               ],
             },
             {
