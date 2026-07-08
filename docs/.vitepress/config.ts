@@ -134,6 +134,14 @@ export default withMermaid({
                 { text: "开发", link: "/merchant/plugins/dev" },
                 { text: "上报API", link: "/merchant/plugins/report-api" },
                 { text: "功能函数", link: "/merchant/plugins/funcs" },
+                { text: "开发总览", link: "/merchant/plugins/overview" },
+                { text: "快速开始", link: "/merchant/plugins/quickstart" },
+                { text: "支付插件开发", link: "/merchant/plugins/pay-dev" },
+                { text: "内置函数参考", link: "/merchant/plugins/builtin-funcs" },
+                {
+                  text: "短信/推送/身份认证插件",
+                  link: "/merchant/plugins/other-plugins",
+                },
               ],
             },
             {
@@ -173,6 +181,10 @@ export default withMermaid({
                       link: "/merchant/templates/pay/variable",
                     },
                     { text: "模板API", link: "/merchant/templates/pay/api" },
+                    {
+                      text: "主题开发指南",
+                      link: "/merchant/templates/pay/theme-dev",
+                    },
                   ],
                 },
               ],
