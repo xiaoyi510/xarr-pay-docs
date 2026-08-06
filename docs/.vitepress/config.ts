@@ -149,6 +149,10 @@ export default withMermaid({
               items: [{ text: "易支付", link: "/merchant/xpay/epay" }],
             },
             {
+              text: "MCP",
+              items: [{ text: "接入指南", link: "/merchant/mcp/index" }],
+            },
+            {
               text: "模板",
               items: [
                 {
