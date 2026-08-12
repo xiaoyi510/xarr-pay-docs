@@ -153,13 +153,41 @@ export default withMermaid({
               items: [{ text: "接入指南", link: "/merchant/mcp/index" }],
             },
             {
-              text: "模板",
+              text: "主题/模板",
               items: [
                 {
-                  text: "首页模板",
+                  text: "主题机制",
                   items: [
-                    { text: "模板引擎", link: "/merchant/templates/index/" },
-                    { text: "模板开发", link: "/merchant/templates/index/dev" },
+                    { text: "主题机制总览", link: "/merchant/templates/overview" },
+                    { text: "模板引擎语法", link: "/merchant/templates/engine" },
+                    { text: "内置函数", link: "/merchant/templates/funcs" },
+                    { text: "模板变量", link: "/merchant/templates/variable" },
+                  ],
+                },
+                {
+                  text: "支付主题",
+                  items: [
+                    { text: "收银台页", link: "/merchant/templates/pay/index" },
+                    { text: "状态页", link: "/merchant/templates/pay/status" },
+                    { text: "分离支付页", link: "/merchant/templates/pay/separate" },
+                    { text: "支付模板变量", link: "/merchant/templates/pay/variable" },
+                    { text: "模板API", link: "/merchant/templates/pay/api" },
+                  ],
+                },
+                {
+                  text: "收银台主题",
+                  items: [
+                    {
+                      text: "收银台主题开发",
+                      link: "/merchant/templates/cashier/index",
+                    },
+                  ],
+                },
+                {
+                  text: "首页主题",
+                  items: [
+                    { text: "首页模板", link: "/merchant/templates/index/" },
+                    { text: "首页模板开发", link: "/merchant/templates/index/dev" },
                   ],
                 },
                 {
@@ -172,22 +200,6 @@ export default withMermaid({
                     {
                       text: "即时消息",
                       link: "/merchant/templates/notification/websocket-tip",
-                    },
-                  ],
-                },
-                {
-                  text: "支付模板",
-                  items: [
-                    { text: "模板开发", link: "/merchant/templates/pay/index" },
-                    { text: "模板函数", link: "/merchant/templates/pay/funcs" },
-                    {
-                      text: "模板变量",
-                      link: "/merchant/templates/pay/variable",
-                    },
-                    { text: "模板API", link: "/merchant/templates/pay/api" },
-                    {
-                      text: "主题开发指南",
-                      link: "/merchant/templates/pay/theme-dev",
                     },
                   ],
                 },
