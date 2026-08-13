@@ -2,8 +2,9 @@
 
 插件功能使用Lua语言开发的,如果需要学习开发 可直接看项目自带的插件进行二开
 
-目前暂时数据交互使用json格式
-
+::: tip 调用约定(v1.5.1.9 起)
+框架已统一服务端调用插件方法的约定:所有由**服务端主动调用**的方法均**接收单个 `ctx` table**(字段直接读、不 `json.decode` 入参),并**返回 `{ code, message, data }` table**(不 `json.encode`、不再使用 `err_code`/`err_message`)。本文示例均为新约定;旧插件适配请看 [插件调用约定迁移指南](./migration.md)。更完整的开发说明见 [支付插件开发](./pay-dev.md)。
+:::
 
 ## 支付插件结构
 
@@ -109,9 +110,9 @@ plugin = {
 ### pluginInfo 返回插件信息
 
 ```lua
--- 用于返回当前插件的信息 
+-- 用于返回当前插件的信息
 function plugin.pluginInfo()
-    return json.encode(plugin.info)
+    return plugin.info
 end
 ```
 
@@ -120,8 +121,8 @@ end
 ### formItems 返回支付通道Form表单配置项
 ```lua
 -- 获取支付通道内的form表单内容
-function plugin.formItems(payType, payChannel)
-    return json.encode({
+function plugin.formItems(ctx)
+    return {
         inputs = {
             {
                 -- form表单name
@@ -161,16 +162,21 @@ function plugin.formItems(payType, payChannel)
                 }
             },
         },
-    })
+    }
 end
 ```
 
 
 ### create 创建订单
 ```lua
--- 订单创建使用此接口 pOrderInfo: 订单信息 pluginOptions: 用户配置的支付通道信息 内容格式为json
-function plugin.create(pOrderInfo, pluginOptions, ...)
-    return json.encode({
+-- 订单创建使用此接口 ctx.order_info: 订单信息 ctx.account_options: 用户配置的支付通道信息(table)
+function plugin.create(ctx)
+    return {
+        -- 返回错误码 200 为正确
+        code = 200,
+        -- 返回错误信息
+        message = "",
+        data = {
             -- 返回支付类型 可选项:pre(需要预处理 如需要微信先登录获取openId等) html(渲染html) qrcode(显示二维码) jump(跳转)
             type = "html",
             -- 返回二维码内容
@@ -179,11 +185,8 @@ function plugin.create(pOrderInfo, pluginOptions, ...)
             url = "",
             -- html content
             content = content,
-            -- 返回错误码 200 为正确
-            err_code = 200,
-            -- 返回错误信息
-            err_message = ""
-        })
+        }
+    }
 end
 ```
 
@@ -247,29 +250,31 @@ end
 
 ```lua
 
--- 支付回调
-function plugin.notify(request, orderInfo, params, pluginOptions)
+-- 支付回调 ctx: 含 request / order_info / account_options 等的 table
+function plugin.notify(ctx)
     -- 失败返回
-    return json.encode({
-            error_code = 500,
-            error_message = "签名校验失败"
-        })
+    return {
+        code = 500,
+        message = "签名校验失败"
+    }
     -- 成功返回
-    return json.encode({
-        error_code = 200,
-        error_message = "支付成功",
-        response = "我是支付响应结果,用于输出给调用方,不填写则默认success",
-    })
+    return {
+        code = 200,
+        message = "支付成功",
+        data = {
+            response = "我是支付响应结果,用于输出给调用方,不填写则默认success",
+        }
+    }
 
 end
 ```
 
 
-### parseMsg 解析上报内容
+### parseMessage 解析上报内容
 
-#### pMsg 结构
+#### ctx 结构
 ``` js
-pMsg ={
+ctx ={
 // 支付类型
 pay_type :"alipay",
 // 支付插件的通道代码
@@ -284,17 +289,18 @@ package_name :""
 ```
 
 ```lua
-function plugin.parseMsg(pMsg)
+-- ctx 已是 table, 直接用, 不要 json.decode
+function plugin.parseMessage(ctx)
     -- 匹配到金额,返回成功和具体金额
-  return json.encode({
-        err_code = 200,
-        amount = "1.5",
-    })
+    return {
+        code = 200,
+        data = { amount = "1.5" },
+    }
     -- 返回失败
-    return json.encode({
-        err_code = 500,
-        err_message = "未能匹配"
-    })
+    return {
+        code = 500,
+        message = "未能匹配"
+    }
 end
 ```
 
@@ -303,106 +309,120 @@ end
 
 #### 参数说明
 
-`render`函数用于根据不同设备环境动态渲染支付数据，每次用户渲染二维码时都会重新请求此函数。如果不实现此函数，系统将使用默认渲染方式。
+`render`函数用于根据不同设备环境动态渲染支付数据，每次用户渲染二维码时都会重新请求此函数。如果不实现此函数，系统将使用默认渲染方式。入参统一为单个 `ctx` table:
 
-- `pOrderInfo`: 订单信息
-- `pOldPayData`: 原始支付数据
-- `pAccountInfo`: 账户信息
-- `pDeviceInfo`: 设备信息，包含设备类型标识
+- `ctx.order_info`: 订单信息
+- `ctx.old_pay_data`: 原始支付数据(table)
+- `ctx.account_info`: 账户信息
+- `ctx.device`: 设备信息，包含设备类型标识
 
 #### 案例
 ```lua
 
 -- 支付数据渲染
-function plugin.render(pOrderInfo,pOldPayData,pAccountInfo,pDeviceInfo)
-    log.debug("渲染测试数据",pOrderInfo,pOldPayData,pAccountInfo,pDeviceInfo)
-    local vDeviceInfo = json.decode(pDeviceInfo)
-    local vOldPayData = json.decode(pOldPayData)
+function plugin.render(ctx)
+    log.debug("渲染测试数据", ctx.order_info, ctx.old_pay_data, ctx.account_info, ctx.device)
+    local vDeviceInfo = ctx.device
+    local vOldPayData = ctx.old_pay_data
 
     -- 如果是微信
     if vDeviceInfo.is_wechat then
-        return json.encode({
-            error_code = 200,
-            error_message = "success",
-            action = "render", -- 为空不需要渲染 save 保存渲染数据 render 只渲染 不保存
+        return {
+            code = 200,
+            message = "success",
             data = {
-                type = "text",
-                content = "我在微信里面"
-            },  -- 返回的payData
-        })
+                action = "render", -- 为空不需要渲染 save 保存渲染数据 render 只渲染 不保存
+                data = {
+                    type = "text",
+                    content = "我在微信里面"
+                },  -- 返回的payData
+            }
+        }
     end
 
     -- 如果是qq
     if vDeviceInfo.is_qq then
-        return json.encode({
-            error_code = 200,
-            error_message = "success",
-            action = "render", -- 为空不需要渲染 save 保存渲染数据 render 只渲染 不保存
+        return {
+            code = 200,
+            message = "success",
             data = {
-                type = "text",
-                content = "我在QQ里面"
-            },  -- 返回的payData
-        })
+                action = "render", -- 为空不需要渲染 save 保存渲染数据 render 只渲染 不保存
+                data = {
+                    type = "text",
+                    content = "我在QQ里面"
+                },  -- 返回的payData
+            }
+        }
     end
 
     -- 如果是支付宝
     if vDeviceInfo.is_alipay then
-        return json.encode({
-            error_code = 200,
-            error_message = "success",
-            action = "render", -- 为空不需要渲染 save 保存渲染数据 render 只渲染 不保存
+        return {
+            code = 200,
+            message = "success",
             data = {
-                type = "jump",
-                url= vOldPayData.qrcode
-            },  -- 返回的payData
-        })
+                action = "render", -- 为空不需要渲染 save 保存渲染数据 render 只渲染 不保存
+                data = {
+                    type = "jump",
+                    url = vOldPayData.qrcode
+                },  -- 返回的payData
+            }
+        }
     end
     -- 如果是浏览器
     if vDeviceInfo.is_browser then
-        return json.encode({
-            error_code = 200,
-            error_message = "success",
-            action = "render", -- 为空不需要渲染 save 保存渲染数据 render 只渲染 不保存
+        return {
+            code = 200,
+            message = "success",
             data = {
-                type = "text",
-                content = "我在l浏览器里面"
-            },  -- 返回的payData
-        })
+                action = "render", -- 为空不需要渲染 save 保存渲染数据 render 只渲染 不保存
+                data = {
+                    type = "text",
+                    content = "我在浏览器里面"
+                },  -- 返回的payData
+            }
+        }
     end
 
     -- 如果是PC
     if vDeviceInfo.is_pc then
-        return json.encode({
-            error_code = 200,
-            error_message = "success",
-            action = "render", -- 为空不需要渲染 save 保存渲染数据 render 只渲染 不保存
+        return {
+            code = 200,
+            message = "success",
             data = {
-                type = "text",
-                content = "我是PC"
-            },  -- 返回的payData
-        })
+                action = "render", -- 为空不需要渲染 save 保存渲染数据 render 只渲染 不保存
+                data = {
+                    type = "text",
+                    content = "我是PC"
+                },  -- 返回的payData
+            }
+        }
     end
 
 
     if vDeviceInfo.is_mobile then
-        return json.encode({
-            error_code = 200,
-            error_message = "success",
-            action = "render", -- 为空不需要渲染 save 保存渲染数据 render 只渲染 不保存
+        return {
+            code = 200,
+            message = "success",
             data = {
-                type = "text",
-                content = "我是手机"
-            },  -- 返回的payData
-        })
+                action = "render", -- 为空不需要渲染 save 保存渲染数据 render 只渲染 不保存
+                data = {
+                    type = "text",
+                    content = "我是手机"
+                },  -- 返回的payData
+            }
+        }
     end
 
 
-    return json.encode({
-        error_code = 200,
-        error_message = "success",
-        action = "", -- 为空不需要渲染 save 保存渲染数据 render 只渲染 不保存
-        data = pOldPayData,  -- 返回的payData
-    })
+    return {
+        code = 200,
+        message = "success",
+        data = {
+            action = "", -- 为空不需要渲染 save 保存渲染数据 render 只渲染 不保存
+            data = vOldPayData,  -- 返回的payData
+        }
+    }
 end
 ```
 
@@ -419,34 +439,35 @@ end
 ### 生成登录二维码
 
 ```lua
--- 二维码登录
-function plugin.login_qrcode(pAccountInfo, pUserInfo, pParams)
-    local vParams = json.decode(pParams)
-    local vAccountInfo = json.decode(pAccountInfo)
-    local vAccountOption = json.decode(vAccountInfo.options)
-    local vUserInfo = json.decode(pUserInfo)
+-- 二维码登录 ctx: 含 account_info / user_info / params / device 的 table
+function plugin.login_qrcode(ctx)
+    local vAccountInfo = ctx.account_info
+    local vUserInfo = ctx.user_info
+    local vAccountOption = json.decode(vAccountInfo.options)  -- options 仍是字符串
 
     -- 获取服务端地址
     local serverAddress = helper.channel_gateway_addr(vAccountOption.gateway)
     if serverAddress == "" then
-        return json.encode({
-            err_code = 500,
-            err_message = "暂未配置支付网关"
-        })
+        return {
+            code = 500,
+            message = "暂未配置支付网关"
+        }
     end
 
     ---- 省略过程
 
-    return json.encode({
-        -- 返回二维码
-        qrcode = qrcode,
-        -- 返回二维码相关参数 check 会一并携带返回
-        options = {
-            client_id = client_id
-        },
-        err_code = 200,
-        err_message = ""
-    })
+    return {
+        code = 200,
+        message = "",
+        data = {
+            -- 返回二维码
+            qrcode = qrcode,
+            -- ⚠️ 二维码相关参数必须是字符串, 服务端原样存入登录令牌, check 时通过 ctx.params 取回
+            options = json.encode({
+                client_id = client_id
+            }),
+        }
+    }
 
 end
 ```
@@ -455,31 +476,31 @@ end
 ```lua
 
 
--- 检查二维码登录状态
-function plugin.login_qrcode_check(pAccountInfo, pUserInfo, pParams)
-    local vParams = json.decode(pParams)
-    local vAccountInfo = json.decode(pAccountInfo)
-    local vAccountOption = json.decode(vAccountInfo.options)
+-- 检查二维码登录状态 ctx: 含 account_info / user_info / params 的 table
+function plugin.login_qrcode_check(ctx)
+    local vParams = json.decode(ctx.params or "{}")  -- params 是字符串, 需 decode
+    local vAccountInfo = ctx.account_info
+    local vAccountOption = json.decode(vAccountInfo.options)  -- options 仍是字符串
     -- 获取服务端地址
     local serverAddress = helper.channel_gateway_addr(vAccountOption.gateway)
     if serverAddress == "" then
-        return json.encode({
-            err_code = 500,
-            err_message = "暂未配置支付网关"
-        })
+        return {
+            code = 500,
+            message = "暂未配置支付网关"
+        }
     end
 
     -- ....省略过程
 
     helper.channel_account_set_option(vAccountInfo.id, "client_id",  vParams.client_id)
 
-    return json.encode({
-            err_code = 200,
-            err_message = string.format('登录成功 %s', returnInfo.Data.nick_name),
-            data = {
-                can_bind_token = false
-            }
-        })
+    return {
+        code = 200,
+        message = string.format('登录成功 %s', returnInfo.Data.nick_name),
+        data = {
+            can_bind_token = false
+        }
+    }
 end
 ```
 
@@ -519,11 +540,12 @@ plugin = {
 ....
 
 
-function plugin.action_wake(pAccountInfo,pUserInfo,pParams)
-    return json.encode({
-        err_code = 200,
-        err_message = "唤醒请求已发送"
-    })
+function plugin.action_wake(ctx)
+    -- ctx: 含 account_info / account_options / channel_info / user_info / params 的 table
+    return {
+        code = 200,
+        message = "唤醒请求已发送"
+    }
 end
 ```
 
@@ -533,26 +555,22 @@ end
 ## account级别的定时任务
 
 ```lua
--- 定时任务
--- pAccountInfo 账号信息
--- pPluginOption 插件配置
--- pExtArgs 扩展参数 在crontab中配置的args
-function plugin.check_account(pAccountInfo, pPluginOption, crontabExtArgs)
-    local vAccountInfo = json.decode(pAccountInfo)
-    local vAccountOptions = json.decode(vAccountInfo.options)
-    local vParams = json.decode(vAccountInfo.options)
+-- 定时任务 ctx: 含 account_info / account_options / plugin_option / args 的 table
+function plugin.check_account(ctx)
+    local vAccountInfo = ctx.account_info
+    local vAccountOptions = ctx.account_options  -- ⚠️ 已是解析好的 table, 不要再 decode
+    return { code = 200, message = "查询成功" }
 end
 ```
 
 ## order级别的定时任务
 
 ```lua
--- 检查订单
--- pOrderInfo 订单信息
--- pAccountInfo 账号信息
--- pPluginOption 插件配置
--- crontabExtArgs 扩展参数 在crontab中配置的args
-function plugin.check_order(pOrderInfo, pAccountInfo, pPluginOption, crontabExtArgs)
+-- 检查订单 ctx: 含 order_info / account_info / account_options / plugin_option / args 的 table
+function plugin.check_order(ctx)
+    local vOrderInfo = ctx.order_info
+    local vAccountInfo = ctx.account_info
+    return { code = 200, message = "ok" }
 end
 
 ```

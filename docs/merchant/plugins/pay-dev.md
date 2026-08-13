@@ -2,6 +2,10 @@
 
 支付插件位于 `plugins/pay/<插件名>/`,包含 `manifest.json` + `plugin.lua`。本文讲解 `plugin.lua` 需要实现的方法、接收的上下文、返回结构。所有类型定义见 `plugins/common/types.lua`,内置函数见 [内置函数参考](./builtin-funcs.md)。
 
+::: tip 调用约定(v1.5.1.9 起)
+框架统一了服务端调用插件方法的约定:所有方法**接收单个 `ctx` table**(字段直接读、不 `json.decode` 入参),**返回 `{ code, message, data }` table**(不 `json.encode`、不再用 `err_code`/`err_message`)。本文示例均为新约定。旧插件适配见 [插件调用约定迁移指南](./migration.md)。
+:::
+
 ---
 
 ## 一、pluginInfo() — 声明能力(必需)
@@ -256,7 +260,7 @@ options = {
 
 `options` 里可加 `disable_random = 1` 关闭随机延迟启动、`has_wait_pay_order = 1`(account scope)仅处理有待支付订单的账号。
 
-对应的 Lua 方法返回一个 JSON 字符串 `{ err_code, err_message, data }`。
+对应的 Lua 方法返回 `{ code, message, data }` table。
 
 ### 方式 B:`detection_interval` + `cron` 方法(逐账号巡检)
 
@@ -268,7 +272,7 @@ function plugin.cron(ctx)
     local accountInfo = ctx.account_info
     local options = ctx.account_options
     -- ... 拉取第三方账单/回执,匹配后入库上报
-    return json.encode({ err_code = 200, err_message = "扫描完成" })
+    return { code = 200, message = "扫描完成" }
 end
 ```
 
@@ -296,15 +300,15 @@ local code, msg = orderPayHelper.third_order_report(insertId)
 ```lua
 local message_parser = require("message_parser")
 
-function plugin.parseMessage(msg)
-    -- msg: types.PluginParseMessage { pay_type, channel_code, title, content, package_name }
+function plugin.parseMessage(ctx)
+    -- ctx: types.PluginParseMessage { pay_type, channel_code, title, content, package_name }
     local rules = {
         ["com.eg.android.AlipayGphone"] = {
             { channel_code = "alipay", amount_in_title = false,
               content_reg = "成功收款(?<amount>[%d%.]+)元" },
         }
     }
-    return message_parser.parse(msg, rules)
+    return message_parser.parse(ctx, rules)
     -- 命中返回 { code=200, data={ amount, channel_code } }
 end
 ```

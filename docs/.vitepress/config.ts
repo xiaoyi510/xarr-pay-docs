@@ -68,6 +68,7 @@ export default withMermaid({
     nav: [
       { text: "主页", link: "/" },
       { text: "XArrPay商户版", link: "/merchant" },
+      { text: "API", link: "/merchant/api/" },
       { text: "授权中心", link: "https://auth.xarr.cn" },
       { text: "博客", link: "https://blog.52nyg.com" },
       { text: "官方网站", link: "https://www.xarr.cn" },
@@ -82,6 +83,7 @@ export default withMermaid({
             { text: "快速开始", link: "/merchant" },
             {
               text: "安装",
+              collapsed: true,
               items: [
                 { text: "环境要求", link: "/merchant/install/env" },
                 { text: "下载安装包", link: "/merchant/install/download" },
@@ -94,10 +96,23 @@ export default withMermaid({
               link: "/merchant/cli/index"
             },
             {
+              text: "API 接口",
+              collapsed: true,
+              items: [
+                { text: "API 总览", link: "/merchant/api/" },
+                { text: "XArrPay 原生协议", link: "/merchant/api/xarrpay" },
+                { text: "易支付协议 V1", link: "/merchant/api/epay" },
+                { text: "易支付 V2 协议", link: "/merchant/api/epayn" },
+                { text: "虎皮椒协议", link: "/merchant/api/xunhupay" },
+              ],
+            },
+            {
               text: "通道",
+              collapsed: true,
               items: [
                 {
                   text: "支付宝",
+                  collapsed: true,
                   items: [
                     { text: "账单模式", link: "/merchant/channel/alipay_bill" },
                     { text: "H5支付", link: "/merchant/channel/alipay_h5" },
@@ -108,6 +123,7 @@ export default withMermaid({
                 },
                 {
                   text: "微信",
+                  collapsed: true,
                   items: [
                     {
                       text: "微信JSAPI",
@@ -129,6 +145,7 @@ export default withMermaid({
             },
             {
               text: "插件",
+              collapsed: true,
               items: [
                 { text: "安装", link: "/merchant/plugins/install" },
                 { text: "开发", link: "/merchant/plugins/dev" },
@@ -137,6 +154,7 @@ export default withMermaid({
                 { text: "开发总览", link: "/merchant/plugins/overview" },
                 { text: "快速开始", link: "/merchant/plugins/quickstart" },
                 { text: "支付插件开发", link: "/merchant/plugins/pay-dev" },
+                { text: "调用约定迁移指南", link: "/merchant/plugins/migration" },
                 { text: "内置函数参考", link: "/merchant/plugins/builtin-funcs" },
                 {
                   text: "短信/推送/身份认证插件",
@@ -146,17 +164,21 @@ export default withMermaid({
             },
             {
               text: "系统接入",
+              collapsed: true,
               items: [{ text: "易支付", link: "/merchant/xpay/epay" }],
             },
             {
               text: "MCP",
+              collapsed: true,
               items: [{ text: "接入指南", link: "/merchant/mcp/index" }],
             },
             {
               text: "主题/模板",
+              collapsed: true,
               items: [
                 {
                   text: "主题机制",
+                  collapsed: true,
                   items: [
                     { text: "主题机制总览", link: "/merchant/templates/overview" },
                     { text: "模板引擎语法", link: "/merchant/templates/engine" },
@@ -166,6 +188,7 @@ export default withMermaid({
                 },
                 {
                   text: "支付主题",
+                  collapsed: true,
                   items: [
                     { text: "收银台页", link: "/merchant/templates/pay/index" },
                     { text: "状态页", link: "/merchant/templates/pay/status" },
@@ -176,6 +199,7 @@ export default withMermaid({
                 },
                 {
                   text: "收银台主题",
+                  collapsed: true,
                   items: [
                     {
                       text: "收银台主题开发",
@@ -185,6 +209,7 @@ export default withMermaid({
                 },
                 {
                   text: "首页主题",
+                  collapsed: true,
                   items: [
                     { text: "首页模板", link: "/merchant/templates/index/" },
                     { text: "首页模板开发", link: "/merchant/templates/index/dev" },
@@ -192,6 +217,7 @@ export default withMermaid({
                 },
                 {
                   text: "通知模板",
+                  collapsed: true,
                   items: [
                     {
                       text: "模板配置案例",
@@ -207,6 +233,7 @@ export default withMermaid({
             },
             {
               text: "常见问题",
+              collapsed: true,
               items: [
                 { text: "常见问题", link: "/merchant/questions/index" },
                 { text: "回调问题", link: "/merchant/questions/callback" },

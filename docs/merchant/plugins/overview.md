@@ -8,6 +8,7 @@
 |------|------|
 | [快速开始](./quickstart.md) | 插件是什么、目录结构、`manifest.json` 元信息、生命周期、方法总览 |
 | [支付插件开发](./pay-dev.md) | 支付插件完整开发指南:必实现方法、上下文结构、返回结构、定时任务、消息解析、最小骨架 |
+| [调用约定迁移指南](./migration.md) | **v1.5.1.9 起** 插件方法统一为单 `ctx` 入参 + `{code,message,data}` 返回,旧插件按此适配 |
 | [内置函数参考](./builtin-funcs.md) | **核心速查**:插件可直接调用的全部内置模块与函数(helper / http / json / crypto / orderPayHelper / orderHelper …) |
 | [短信 / 推送 / 身份认证插件](./other-plugins.md) | 短信 / 推送 / 身份认证 三类插件的接口与示例 |
 | [主题开发](/merchant/templates/overview) | 主题机制总览、模板引擎语法、内置函数、按类型(支付/收银台/首页)分组的开发指南 |
