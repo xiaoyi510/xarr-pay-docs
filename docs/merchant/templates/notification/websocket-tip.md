@@ -3,9 +3,7 @@
 ### 使用方式
 Websocket
 
-连接地址: `[ws/wss]://域名/api/ws?uid=用户pid&message_key=消息同步密钥`
-
-消息同步密钥在 `个人中心`-`基本信息`中获取
+连接流程：先使用已登录会话调用 `POST /api/ws/ticket` 获取 60 秒有效、一次性使用的短期 ticket，再连接 `[ws/wss]://域名/api/ws?ticket=短期ticket`。ticket 绑定当前会话、IP 和 User-Agent，长期通信密钥不会出现在 URL 或个人中心页面。
 
 
 ### cmd枚举值
@@ -22,4 +20,3 @@ Websocket
 
 ### 无法连接到 /api/ws 消息服务器
 如使用了CDN那么需要去CDN站点开启websocket支持
-
