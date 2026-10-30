@@ -154,6 +154,7 @@ export default withMermaid({
                 { text: "开发总览", link: "/merchant/plugins/overview" },
                 { text: "快速开始", link: "/merchant/plugins/quickstart" },
                 { text: "支付插件开发", link: "/merchant/plugins/pay-dev" },
+                { text: "实名认证插件开发", link: "/merchant/plugins/certificate-dev" },
                 { text: "调用约定迁移指南", link: "/merchant/plugins/migration" },
                 { text: "内置函数参考", link: "/merchant/plugins/builtin-funcs" },
                 {

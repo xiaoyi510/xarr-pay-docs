@@ -1,6 +1,6 @@
 # 04 · 短信 / 推送 / 身份认证插件
 
-除支付插件外,系统还有三类插件。它们与支付插件共用运行环境和内置函数,但接口不同。
+除支付插件外,系统还有三类插件。各类插件接口不同，其中实名认证插件使用独立的受限运行环境。
 
 ---
 
@@ -142,8 +142,11 @@ function plugin.pushMessage(userConnectInfo, message) end -- 推送消息
 
 ## 三、身份认证插件(Certificate)
 
-- **目录**:`plugins/certificate/<插件名>/`,目前仅 `alipay_face`(支付宝刷脸认证,占位实现)。
-- 该类插件用于身份认证/实名核验流程,接口随业务定制,暂无统一规范。开发时以实际业务需求和官方后续实现为准。
+自商户版 **1.5.1.15** 起提供统一的 **certificate v1** 协议，插件 `manifest.json` 的 `type` 固定为 **7**，内置 `alipay_face` 支付宝人脸认证插件。
+
+支持个人刷脸、姓名证件及手机号三要素核验，由插件声明能力和动态表单，系统统一处理通道选择、认证记录及费用。
+
+完整协议、带中文注释的 Lua 示例、回调验签与验收步骤见[实名认证插件开发](./certificate-dev.md)。
 
 ---
 
@@ -152,9 +155,9 @@ function plugin.pushMessage(userConnectInfo, message) end -- 推送消息
 | 维度 | 支付 pay | 短信 sms | 推送 pusher | 身份认证 certificate |
 |------|---------|----------|------------|-----------------|
 | 目录 | plugins/pay | plugins/sms | plugins/pusher | plugins/certificate |
-| 元信息 | manifest.json (type=1) | manifest.json (type=4) | plugin.json5 / 内联 | 内联 |
-| manifest 强校验 | ✅ | ✅ | ❌ | ❌ |
-| 核心方法 | create/notify | sendSms | push/pushMessage | 定制 |
-| 接口稳定度 | 稳定 | 稳定 | 演进中 | 演进中 |
+| 元信息 | manifest.json (type=1) | manifest.json (type=4) | plugin.json5 / 内联 | manifest.json (type=7) |
+| manifest 强校验 | ✅ | ✅ | ❌ | ✅ |
+| 核心方法 | create/notify | sendSms | push/pushMessage | create/query/notify |
+| 接口稳定度 | 稳定 | 稳定 | 演进中 | v1 |
 
 新增短信插件推荐直接复制 `plugins/sms/aliyun/` 改造。
